@@ -42,7 +42,7 @@ export default function ProductCard({ product }) {
         </CardContent>
       </CardActionArea>
 
-       <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
+      <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
         <IconButton onClick={handleFavoriteClick}>
           {isFavorite ? <FavoriteIcon color="error" /> : <FavoriteBorderIcon />}
         </IconButton>
