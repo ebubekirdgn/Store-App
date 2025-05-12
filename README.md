@@ -8,18 +8,10 @@ React + Vite ile geliştirilen modern ve hızlı bir e-ticaret uygulaması. Kull
 
 - ⚛️ React
 - ⚡ Vite
-- 🧠 Context API / Redux (varsa belirtin)
-- 🎨 TailwindCSS / CSS Modules (hangi stil teknolojisini kullandıysanız)
+- 🎨 Material UI 
 - 🔗 React Router
-- 🛒 Fake Store API / JSON Server (kullandığınız backend'i belirtin)
+- 🛒 Fake Store API / JSON Server
 
-## 🖼️ Ekran Görüntüleri
-
-![Ana Sayfa](./screenshots/home.png)
-![Ürün Detayı](./screenshots/product-detail.png)
-![Sepet](./screenshots/cart.png)
-
-> `screenshots` klasörüne ekran görüntülerinizi eklemeyi unutmayın.
 
 ## 📦 Kurulum
 
