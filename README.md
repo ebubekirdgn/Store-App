@@ -1,5 +1,3 @@
-# Store-App
-
 # 🛍️ Store App
 
 React + Vite ile geliştirilen modern ve hızlı bir e-ticaret uygulaması. Kullanıcılar ürünleri görüntüleyebilir, sepete ekleyebilir ve ödeme adımına ilerleyebilir.
