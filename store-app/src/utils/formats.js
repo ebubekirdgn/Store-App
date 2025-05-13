@@ -1,4 +1,4 @@
-export const currenyTRY = new Intl.NumberFormat("tr-TR", {
+export const currencyTRY = new Intl.NumberFormat("tr-TR", {
   style: "currency",
   currency: "TRY",
 });
