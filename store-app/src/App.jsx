@@ -8,6 +8,7 @@ import LoginPage from "./pages/auth/Login"
 import RegisterPage from "./pages/auth/Register"
 import ErrorPage from "./pages/errors/Error"
 import ServerErrorPage from "./pages/errors/Server"
+import NotFoundPage from "./pages/errors/NotFound"
 
 export const router = createBrowserRouter([
   {
@@ -24,8 +25,6 @@ export const router = createBrowserRouter([
         ]
       },
 
-
-
       { path: "cart", element: <CartPage /> },
       { path: "login", element: <LoginPage /> },
       { path: "register", element: <RegisterPage /> },
@@ -34,11 +33,13 @@ export const router = createBrowserRouter([
         children: [
           { index: true, element: <ErrorPage /> },
           { path: "server-error", element: <ServerErrorPage /> },
+          { path: "not-found", element: <NotFoundPage /> },
         ],
       },
-    ]
+      { path: "*", element: <NotFoundPage /> },
+    ],
   },
-])
+]); 
 function App() {
   return <RouterProvider router={router} />
 
