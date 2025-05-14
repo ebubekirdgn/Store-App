@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductList from "../../components/products/ProductList";
+import Loading  from "../../components/Loading"
 
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);
@@ -28,7 +29,7 @@ export default function ProductsPage() {
     fetchProducts();
   }, []);
 
-  if (loading) return <h1>Yükleniyor...</h1>;
+  if (loading) return <Loading message="Yükleniyor..." />;
   if (error) return <h1>{error}</h1>;
   if (products.length === 0) return <h2>Ürün bulunamadı.</h2>;
 
