@@ -1,18 +1,21 @@
-import { createBrowserRouter, RouterProvider } from "react-router"
-import MainLayout from "./layouts/Main"
-import HomePage from "./pages/home/Home"
-import ProductsPage from "./pages/products/Products"
-import ProductDetailsPage from "./pages/products/ProductDetails"
-import CartPage from "./pages/cart/Cart"
-import LoginPage from "./pages/auth/Login"
-import RegisterPage from "./pages/auth/Register"
-import ErrorPage from "./pages/errors/Error"
-import ServerErrorPage from "./pages/errors/Server"
-import NotFoundPage from "./pages/errors/NotFound"
+import { createBrowserRouter, RouterProvider } from "react-router";
+import MainLayout from "./layouts/Main";
+import HomePage from "./pages/home/Home";
+import ProductsPage from "./pages/products/Products";
+import ProductDetailsPage from "./pages/products/ProductDetails";
+import CartPage from "./pages/cart/Cart";
+import LoginPage from "./pages/auth/Login";
+import RegisterPage from "./pages/auth/Register";
+import ErrorPage from "./pages/errors/Error";
+import ServerErrorPage from "./pages/errors/Server";
+import NotFoundPage from "./pages/errors/NotFound";
+import { useEffect } from "react";
+import requests from "./api/apiClient";
 
 export const router = createBrowserRouter([
   {
-    path: "/", element: <MainLayout />,
+    path: "/",
+    element: <MainLayout />,
     children: [
       { index: true, element: <HomePage /> },
       { path: "home", element: <HomePage /> },
@@ -22,7 +25,7 @@ export const router = createBrowserRouter([
         children: [
           { index: true, element: <ProductsPage /> },
           { path: ":id", element: <ProductDetailsPage /> },
-        ]
+        ],
       },
 
       { path: "cart", element: <CartPage /> },
@@ -39,10 +42,17 @@ export const router = createBrowserRouter([
       { path: "*", element: <NotFoundPage /> },
     ],
   },
-]); 
-function App() {
-  return <RouterProvider router={router} />
+]);
 
+function App() {
+  useEffect(() => {
+    requests.cart
+      .get()
+      .then((cart) => console.log(cart))
+      .catch((error) => console.log(error));
+  }, []);
+
+  return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;
