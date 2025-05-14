@@ -26,5 +26,7 @@ export default function ProductDetailsPage() {
 
   if (loading) return <Loading message="Yükleniyor..." />;
 
+  if (!product) return <h1>Ürün bulunamadı.</h1>;
+  
   return <ProductItem product={product} />;
 }
