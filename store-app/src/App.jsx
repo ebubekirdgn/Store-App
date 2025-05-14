@@ -6,6 +6,7 @@ import ProductDetailsPage from "./pages/products/ProductDetails"
 import CartPage from "./pages/cart/Cart"
 import LoginPage from "./pages/auth/Login"
 import RegisterPage from "./pages/auth/Register"
+import ErrorPage from "./pages/error/Error"
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
       { path: "cart", element: <CartPage /> },
       { path: "login", element: <LoginPage /> },
       { path: "register", element: <RegisterPage /> },
+      { path: "error", element: <ErrorPage /> },
     ]
   },
 ])
