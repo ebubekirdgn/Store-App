@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import requests from "../../api/apiClient";
 import {
   IconButton,
   Paper,
@@ -13,23 +11,13 @@ import {
 } from "@mui/material";
 
 import { Delete } from "@mui/icons-material";
-import Loading from "../../components/Loading";
 import { currencyTRY } from "../../utils/formats";
+import { useCartContext } from "../../context/cart/Cart";
 
 function CartPage() {
-  const [cart, setCart] = useState(null);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    requests.cart
-      .get()
-      .then((cart) => setCart(cart))
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
-  }, []);
+  const { cart } = useCartContext();
 
-  if (loading) return <Loading message="Yükleniyor" />;
-
-  if (!cart)
+  if (!cart || cart.cartItems.length === 0)
     return <Typography component="h4">Sepetinizde ürün yok</Typography>;
 
   return (
@@ -73,5 +61,4 @@ function CartPage() {
   );
 }
 
-
-export default CartPage
+export default CartPage;

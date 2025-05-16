@@ -2,6 +2,7 @@ import { AppBar, Badge, Box, Button, IconButton, Toolbar } from "@mui/material";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import { Link, NavLink } from "react-router";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useCartContext } from "../context/cart/Cart";
 
 const links = [
   { title: "Home", to: "/" },
@@ -15,7 +16,13 @@ const authLinks = [
 ];
 
 export default function Navbar() {
-  return (
+  const { cart } = useCartContext();
+
+  const itemCount = Array.isArray(cart?.cartItems)
+    ? cart.cartItems.reduce((total, item) => total + (item.product?.quantity || 0), 0)
+    : 0;
+
+   return (
     <AppBar position="static" sx={{ backgroundColor: "primary.light" }}>
       <Toolbar>
         <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
@@ -23,7 +30,12 @@ export default function Navbar() {
             <StorefrontIcon />
           </IconButton>
           {links.map((link) => (
-            <Button key={link.to} component={NavLink} to={link.to} color="inherit">
+            <Button
+              key={link.to}
+              component={NavLink}
+              to={link.to}
+              color="inherit"
+            >
               {link.title}
             </Button>
           ))}
@@ -37,12 +49,17 @@ export default function Navbar() {
             size="large"
             edge="start"
           >
-            <Badge badgeContent="2" color="primary">
+            <Badge badgeContent={itemCount} color="primary">
               <ShoppingCartIcon />
             </Badge>
           </IconButton>
           {authLinks.map((link) => (
-            <Button key={link.to} component={NavLink} to={link.to} color="inherit">
+            <Button
+              key={link.to}
+              component={NavLink}
+              to={link.to}
+              color="inherit"
+            >
               {link.title}
             </Button>
           ))}

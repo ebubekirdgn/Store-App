@@ -21,11 +21,13 @@ import { Link } from "react-router-dom";
 import { currencyTRY } from "../../utils/formats";
 import { useState } from "react";
 import requests from "../../api/apiClient";
+import { useCartContext } from "../../context/cart/Cart";
 
 export default function ProductCard({ product }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [loading, setLoading] = useState(false);
   const theme = useTheme();
+  const { setCart } = useCartContext();
 
   const handleFavoriteClick = (e) => {
     e.preventDefault();
@@ -33,11 +35,11 @@ export default function ProductCard({ product }) {
     setIsFavorite(!isFavorite);
   };
 
-  function handleAddItem(productId) {
+   function handleAddItem(productId) {
     setLoading(true);
     requests.cart
       .addItem(productId)
-      .then((cart) => console.log(cart))
+      .then((cart) => setCart(cart))
       .catch((error) => console.log(error))
       .finally(() => setLoading(false));
   }

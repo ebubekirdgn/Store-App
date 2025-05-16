@@ -9,8 +9,6 @@ import RegisterPage from "./pages/auth/Register";
 import ErrorPage from "./pages/errors/Error";
 import ServerErrorPage from "./pages/errors/Server";
 import NotFoundPage from "./pages/errors/NotFound";
-import { useEffect } from "react";
-import requests from "./api/apiClient";
 
 export const router = createBrowserRouter([
   {
@@ -45,14 +43,6 @@ export const router = createBrowserRouter([
 ]);
 
 function App() {
-  useEffect(() => {
-    requests.cart
-      .get()
-      .then((cart) => console.log(cart))
-      .catch((error) => console.log(error));
-  }, []);
-
   return <RouterProvider router={router} />;
 }
-
 export default App;
