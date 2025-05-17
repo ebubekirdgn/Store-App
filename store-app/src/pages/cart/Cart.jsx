@@ -1,7 +1,6 @@
 import {
   Button,
   CircularProgress,
-  IconButton,
   Paper,
   Table,
   TableBody,
@@ -9,8 +8,8 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
 } from "@mui/material";
+
 import { currencyTRY } from "../../utils/formats";
 import { Delete } from "@mui/icons-material";
 import { useCartContext } from "../../context/cart/Cart";
@@ -18,30 +17,30 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import { useState } from "react";
 import requests from "../../api/apiClient";
+import EmptyCartMessage from "../cart/EmptyCartMessage";
 
 function CartPage() {
-const { cart, setCart } = useCartContext();
-  const [loading, setLoading] = useState(false);
+  const { cart, setCart } = useCartContext();
+  const [status, setStatus] = useState({ loading: false, id: "" });
 
-  if (!cart || cart.cartItems.length === 0)
-    return <Typography component="h4">Sepetinizde ürün yok</Typography>;
+ if (!cart?.cartItems?.length) return <EmptyCartMessage />;
 
-  function handleAddItem(productId) {
-    setLoading(true);
+  function handleAddItem(productId, id) {
+    setStatus({ loading: true, id: id });
     requests.cart
       .addItem(productId)
       .then((cart) => setCart(cart))
       .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
+      .finally(() => setStatus({ loading: false, id: "" }));
   }
 
-  function handleRemoveItem(productId, quantity = 1) {
-    setLoading(true);
+  function handleRemoveItem(productId, id, quantity = 1) {
+    setStatus({ loading: true, id: id });
     requests.cart
       .deleteItem(productId, quantity)
       .then((cart) => setCart(cart))
       .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
+      .finally(() => setStatus({ loading: false, id: "" }));
   }
 
   return (
@@ -69,8 +68,16 @@ const { cart, setCart } = useCartContext();
               <TableCell>{item.product.title}</TableCell>
               <TableCell>{currencyTRY.format(item.product.price)}</TableCell>
               <TableCell>
-                <Button onClick={() => handleAddItem(item.product.productId)}>
-                  {loading ? (
+                <Button
+                  onClick={() =>
+                    handleAddItem(
+                      item.product.productId,
+                      "add" + item.product.productId
+                    )
+                  }
+                >
+                  {status.loading &&
+                  status.id === "add" + item.product.productId ? (
                     <CircularProgress size="20px" />
                   ) : (
                     <AddCircleOutlineIcon />
@@ -79,9 +86,15 @@ const { cart, setCart } = useCartContext();
 
                 {item.product.quantity}
                 <Button
-                  onClick={() => handleRemoveItem(item.product.productId)}
+                  onClick={() =>
+                    handleRemoveItem(
+                      item.product.productId,
+                      "remove" + item.product.productId
+                    )
+                  }
                 >
-                  {loading ? (
+                  {status.loading &&
+                  status.id === "remove" + item.product.productId ? (
                     <CircularProgress size="20px" />
                   ) : (
                     <RemoveCircleOutlineIcon />
@@ -92,9 +105,23 @@ const { cart, setCart } = useCartContext();
                 {currencyTRY.format(item.product.price * item.product.quantity)}
               </TableCell>
               <TableCell>
-                <IconButton color="error">
-                  <Delete />
-                </IconButton>
+                <Button
+                  onClick={() =>
+                    handleRemoveItem(
+                      item.product.productId,
+                      "remove_all" + item.product.productId,
+                      item.product.quantity
+                    )
+                  }
+                  color="error"
+                >
+                  {status.loading &&
+                  status.id === "remove_all" + item.product.productId ? (
+                    <CircularProgress size="20px" />
+                  ) : (
+                    <Delete />
+                  )}
+                </Button>
               </TableCell>
             </TableRow>
           ))}
