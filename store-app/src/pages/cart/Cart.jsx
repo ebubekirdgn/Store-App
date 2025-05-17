@@ -23,7 +23,13 @@ function CartPage() {
   const { cart, setCart } = useCartContext();
   const [status, setStatus] = useState({ loading: false, id: "" });
 
- if (!cart?.cartItems?.length) return <EmptyCartMessage />;
+  const subTotal = cart.cartItems.reduce((acc, item) => {
+    return acc + (item.product.price * item.product.quantity);
+  }, 0);
+  const tax = subTotal * 0.18;
+  const total = subTotal + tax;
+
+  if (!cart?.cartItems?.length) return <EmptyCartMessage />;
 
   function handleAddItem(productId, id) {
     setStatus({ loading: true, id: id });
@@ -125,6 +131,37 @@ function CartPage() {
               </TableCell>
             </TableRow>
           ))}
+          <TableRow>
+            <TableCell colSpan={5} align="right">
+              <strong>Subtotal:</strong>
+            </TableCell>
+            <TableCell>
+              <strong>{currencyTRY.format(subTotal)}</strong>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell colSpan={5} align="right">
+              <strong>KDV %18:</strong>
+            </TableCell>
+            <TableCell>
+              <strong>{currencyTRY.format(tax)}</strong>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell colSpan={5} align="right">
+              <strong>Toplam:</strong>
+            </TableCell>
+            <TableCell>
+              <strong>{currencyTRY.format(total)}</strong>
+            </TableCell>  
+          </TableRow>
+          <TableRow>
+            <TableCell colSpan={7} align="right">
+              <Button variant="contained" color="primary">
+                Ödeme Yap
+              </Button>
+            </TableCell>
+          </TableRow>
         </TableBody>
       </Table>
     </TableContainer>

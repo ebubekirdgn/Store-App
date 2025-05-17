@@ -13,8 +13,9 @@ export default function ProductDetailsPage() {
   const {cart, setCart } = useCartContext();
 
   const cartItem = cart?.cartItems.find(
-    (i) => i.product.productId == product?.id
+    (i) => i.product.productId === product?.id
   );
+  console.log(cartItem);
 
   function handleAddItem(productId) {
     setIsAdding(true);

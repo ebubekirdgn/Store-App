@@ -22,16 +22,17 @@ export default function ProductItem({
           <img
             src={`http://localhost:5000/images/${product.image}`}
             style={{ width: "100%" }}
+            alt={product.title}
           />
         </Paper>
       </Grid>
       <Grid size={{ lg: 8, md: 7, sm: 6, xs: 12 }}>
         <Paper variant="outlined" sx={{ p: 3 }}>
-          <Typography component="h1" variant="h4" color="secondary.dark">
+          <Typography component="h1" variant="h4" color="primary.dark">
             {product.title}
           </Typography>
           <Typography variant="body1">{product.description}</Typography>
-          <Typography variant="h5" color="secondary" sx={{ mt: 3 }}>
+          <Typography variant="h5" color="primary" sx={{ mt: 3 }}>
             {currencyTRY.format(product.price)}
           </Typography>
 
@@ -45,7 +46,7 @@ export default function ProductItem({
             <Button
               onClick={() => handleAddItem(product.id)}
               variant="contained"
-              color="secondary"
+              color="primary"
             >
               Sepete Ekle
             </Button>
@@ -55,7 +56,7 @@ export default function ProductItem({
                 variant="body2"
                 sx={{ display: "flex", alignItems: "center" }}
               >
-                <ReportIcon color="secondary" /> Sepetinizde{" "}
+                <ReportIcon color="primary" /> Sepetinizde{" "}
                 {cartItem.product.quantity} adet eklendi.
               </Typography>
             )}
