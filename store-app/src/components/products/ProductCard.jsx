@@ -125,7 +125,7 @@ export default function ProductCard({ product }) {
           </Typography>
 
           <Rating
-            value={product.rating || 4.5}
+            value={product.rating }
             precision={0.5}
             readOnly
             size="small"

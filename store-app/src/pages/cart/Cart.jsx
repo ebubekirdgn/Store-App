@@ -133,7 +133,7 @@ function CartPage() {
           ))}
           <TableRow>
             <TableCell colSpan={5} align="right">
-              <strong>Subtotal:</strong>
+              <strong>Toplam :</strong>
             </TableCell>
             <TableCell>
               <strong>{currencyTRY.format(subTotal)}</strong>
@@ -149,7 +149,7 @@ function CartPage() {
           </TableRow>
           <TableRow>
             <TableCell colSpan={5} align="right">
-              <strong>Toplam:</strong>
+              <strong>Genel Toplam (KDV Dahil):</strong>
             </TableCell>
             <TableCell>
               <strong>{currencyTRY.format(total)}</strong>
