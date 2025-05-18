@@ -127,7 +127,6 @@ export default function ProductCard({ product }) {
           <Rating
             value={product.rating }
             precision={0.5}
-            readOnly
             size="small"
             sx={{ mb: 1 }}
           />
