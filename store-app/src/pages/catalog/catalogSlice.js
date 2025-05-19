@@ -15,10 +15,13 @@ export const fetchProducts = createAsyncThunk(
 
 export const fetchProductById = createAsyncThunk(
   "catalog/fetchProductById",
-  async (productId) => {
+  async (productId, { getState }) => {
+    const existingProduct = selectProductById(getState(), productId);
+    if (existingProduct) return existingProduct; // Yeniden çekme
     return await requests.products.details(productId);
   }
 );
+
 const productsAdapter = createEntityAdapter();
 
 const initialState = productsAdapter.getInitialState({
@@ -44,6 +47,7 @@ export const catalogSlice = createSlice({
 
     builder.addCase(fetchProducts.rejected, (state) => {
       state.status = CART_STATUS.IDLE;
+      state.error = action.error?.message || "Ürünler yüklenemedi";
     });
 
     builder.addCase(fetchProductById.pending, (state) => {
@@ -57,6 +61,7 @@ export const catalogSlice = createSlice({
 
     builder.addCase(fetchProductById.rejected, (state) => {
       state.status = CART_STATUS.IDLE;
+      state.error = action.error?.message || "Ürün yüklenemedi";
     });
   },
 });
