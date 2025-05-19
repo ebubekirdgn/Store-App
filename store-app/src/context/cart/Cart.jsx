@@ -1,27 +1,18 @@
 import  { createContext, useState, useEffect, useContext } from "react";
-import requests from "./../../api/apiClient";
 
 export const CartContext = createContext();
 
-export const CartContextProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+export function useCartContext() {
+  const context = useContext(CartContext);
+  return context;
+}
 
-
-  useEffect(() => {
-    requests.cart
-      .get()
-      .then((cart) => setCart(cart))
-      .catch((err) => {
-        console.error(err);
-        setError(err);
-      })
-  }, []);
+export function CartContextProvider({ children }) {
+  const [cart, setCart] = useState(null);
 
   return (
-    <CartContext.Provider value={{ cart, setCart}}>
+    <CartContext.Provider value={{ cart, setCart }}>
       {children}
     </CartContext.Provider>
   );
-};
-
-export const useCartContext = () => useContext(CartContext);
+}
