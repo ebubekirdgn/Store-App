@@ -17,7 +17,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart, deleteItemFromCart } from "./cartSlice";
-import { CART_STATUS } from "./constants";
+import { CART_STATUS } from "../../utils/constants";
 
 export default function CartPage() {
   const { cart, status } = useSelector((state) => state.cart);

@@ -1,29 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ProductList from "../../components/products/ProductList";
-import Loading from "../../components/Loading"
-
-import requests from "../../api/apiClient";
+import Loading from "../../components/Loading";
+import { useDispatch, useSelector } from "react-redux";
+import { CART_STATUS } from "../../utils/constants";
+import { fetchProducts, selectAllProducts } from "../catalog/catalogSlice";
 
 export default function ProductsPage() {
-  const [loadedProducts, setLoadedProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+  const loadedProducts = useSelector(selectAllProducts);
+  const { status, isLoaded } = useSelector((state) => state.catalog);
 
   useEffect(() => {
-    async function fetchProducts() {
-      try {
-        const data = await requests.products.list();
-        setLoadedProducts(data);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
+    if (!isLoaded) dispatch(fetchProducts());
+  }, [isLoaded]);
 
-    fetchProducts();
-  }, []);
-
-  if (loading) return <Loading message="Yükleniyor..." />;
-
+  if (status === CART_STATUS.PENDING_FETCH_PRODUCTS)
+    return <Loading message="Yükleniyor..." />;
   return <ProductList products={loadedProducts} />;
 }

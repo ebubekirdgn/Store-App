@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { CART_STATUS } from "./constants";
+import { CART_STATUS } from "../../utils/constants";
 import requests from "../../api/apiClient";
 
 const initialState = {
