@@ -21,13 +21,14 @@ import { Link } from "react-router-dom";
 import { currencyTRY } from "../../utils/formats";
 import { useState } from "react";
 import requests from "../../api/apiClient";
-import { useCartContext } from "../../context/cart/Cart";
+import { useDispatch } from "react-redux";
+import { setCart } from "../../pages/cart/cartSlice";
 
 export default function ProductCard({ product }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
   const theme = useTheme();
-  const { setCart } = useCartContext();
 
   const handleFavoriteClick = (e) => {
     e.preventDefault();
@@ -39,7 +40,7 @@ export default function ProductCard({ product }) {
     setLoading(true);
     requests.cart
       .addItem(productId)
-      .then((cart) => setCart(cart))
+      .then((cart) => dispatch(setCart(cart)))
       .catch((error) => console.log(error))
       .finally(() => setLoading(false));
   }

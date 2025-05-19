@@ -12,20 +12,23 @@ import {
 
 import { currencyTRY } from "../../utils/formats";
 import { Delete } from "@mui/icons-material";
-import { useCartContext } from "../../context/cart/Cart";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import { useState } from "react";
 import requests from "../../api/apiClient";
 import EmptyCartMessage from "../cart/EmptyCartMessage";
+import { useDispatch, useSelector } from "react-redux";
+import { setCart } from "../../pages/cart/cartSlice";
 
 function CartPage() {
-  const { cart, setCart } = useCartContext();
   const [status, setStatus] = useState({ loading: false, id: "" });
+  const { cart } = useSelector((state) => state.cart);
+  const dispacth = useDispatch();
 
-  const subTotal = cart.cartItems.reduce((acc, item) => {
-    return acc + (item.product.price * item.product.quantity);
-  }, 0);
+
+  const subTotal = cart?.cartItems?.reduce((acc, item) => {
+    return acc + item.product.price * item.product.quantity;
+  }, 0) || 0;
   const tax = subTotal * 0.18;
   const total = subTotal + tax;
 
@@ -35,7 +38,7 @@ function CartPage() {
     setStatus({ loading: true, id: id });
     requests.cart
       .addItem(productId)
-      .then((cart) => setCart(cart))
+      .then((cart) => dispacth(setCart(cart)))
       .catch((error) => console.log(error))
       .finally(() => setStatus({ loading: false, id: "" }));
   }
@@ -44,7 +47,7 @@ function CartPage() {
     setStatus({ loading: true, id: id });
     requests.cart
       .deleteItem(productId, quantity)
-      .then((cart) => setCart(cart))
+      .then((cart) => dispacth(setCart(cart)))
       .catch((error) => console.log(error))
       .finally(() => setStatus({ loading: false, id: "" }));
   }
@@ -153,7 +156,7 @@ function CartPage() {
             </TableCell>
             <TableCell>
               <strong>{currencyTRY.format(total)}</strong>
-            </TableCell>  
+            </TableCell>
           </TableRow>
           <TableRow>
             <TableCell colSpan={7} align="right">
