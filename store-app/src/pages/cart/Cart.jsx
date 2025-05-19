@@ -8,49 +8,31 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Typography,
 } from "@mui/material";
 
 import { currencyTRY } from "../../utils/formats";
 import { Delete } from "@mui/icons-material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
-import { useState } from "react";
-import requests from "../../api/apiClient";
-import EmptyCartMessage from "../cart/EmptyCartMessage";
 import { useDispatch, useSelector } from "react-redux";
-import { setCart } from "../../pages/cart/cartSlice";
+import { addItemToCart, deleteItemFromCart } from "./cartSlice";
+import { CART_STATUS } from "./constants";
 
-function CartPage() {
-  const [status, setStatus] = useState({ loading: false, id: "" });
-  const { cart } = useSelector((state) => state.cart);
-  const dispacth = useDispatch();
+export default function CartPage() {
+  const { cart, status } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
+  const subTotal = cart?.cartItems.reduce(
+    (toplam, item) => toplam + item.product.price * item.product.quantity,
+    0
+  );
 
-  const subTotal = cart?.cartItems?.reduce((acc, item) => {
-    return acc + item.product.price * item.product.quantity;
-  }, 0) || 0;
-  const tax = subTotal * 0.18;
+  const tax = subTotal * 0.2;
   const total = subTotal + tax;
 
-  if (!cart?.cartItems?.length) return <EmptyCartMessage />;
-
-  function handleAddItem(productId, id) {
-    setStatus({ loading: true, id: id });
-    requests.cart
-      .addItem(productId)
-      .then((cart) => dispacth(setCart(cart)))
-      .catch((error) => console.log(error))
-      .finally(() => setStatus({ loading: false, id: "" }));
-  }
-
-  function handleRemoveItem(productId, id, quantity = 1) {
-    setStatus({ loading: true, id: id });
-    requests.cart
-      .deleteItem(productId, quantity)
-      .then((cart) => dispacth(setCart(cart)))
-      .catch((error) => console.log(error))
-      .finally(() => setStatus({ loading: false, id: "" }));
-  }
+  if (!cart || cart.cartItems.length === 0)
+    return <Typography component="h4">Sepetinizde ürün yok</Typography>;
 
   return (
     <TableContainer component={Paper}>
@@ -79,14 +61,13 @@ function CartPage() {
               <TableCell>
                 <Button
                   onClick={() =>
-                    handleAddItem(
-                      item.product.productId,
-                      "add" + item.product.productId
+                    dispatch(
+                      addItemToCart({ productId: item.product.productId })
                     )
                   }
                 >
-                  {status.loading &&
-                  status.id === "add" + item.product.productId ? (
+                  {status ===
+                  CART_STATUS.PENDING_ADD_ITEM + item.product.productId ? (
                     <CircularProgress size="20px" />
                   ) : (
                     <AddCircleOutlineIcon />
@@ -96,14 +77,19 @@ function CartPage() {
                 {item.product.quantity}
                 <Button
                   onClick={() =>
-                    handleRemoveItem(
-                      item.product.productId,
-                      "remove" + item.product.productId
+                    dispatch(
+                      deleteItemFromCart({
+                        productId: item.product.productId,
+                        quantity: 1,
+                        key: "single",
+                      })
                     )
                   }
                 >
-                  {status.loading &&
-                  status.id === "remove" + item.product.productId ? (
+                  {status ===
+                  CART_STATUS.PENDING_DELETE_ITEM +
+                    item.product.productId +
+                    "single" ? (
                     <CircularProgress size="20px" />
                   ) : (
                     <RemoveCircleOutlineIcon />
@@ -116,16 +102,20 @@ function CartPage() {
               <TableCell>
                 <Button
                   onClick={() =>
-                    handleRemoveItem(
-                      item.product.productId,
-                      "remove_all" + item.product.productId,
-                      item.product.quantity
+                    dispatch(
+                      deleteItemFromCart({
+                        productId: item.product.productId,
+                        quantity: item.product.quantity,
+                        key: "all",
+                      })
                     )
                   }
                   color="error"
                 >
-                  {status.loading &&
-                  status.id === "remove_all" + item.product.productId ? (
+                  {status ===
+                  CART_STATUS.PENDING_DELETE_ITEM +
+                    item.product.productId +
+                    "all" ? (
                     <CircularProgress size="20px" />
                   ) : (
                     <Delete />
@@ -135,34 +125,27 @@ function CartPage() {
             </TableRow>
           ))}
           <TableRow>
-            <TableCell colSpan={5} align="right">
-              <strong>Toplam :</strong>
+            <TableCell align="right" colSpan={5}>
+              Ara Toplam
             </TableCell>
-            <TableCell>
-              <strong>{currencyTRY.format(subTotal)}</strong>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell colSpan={5} align="right">
-              <strong>KDV %18:</strong>
-            </TableCell>
-            <TableCell>
-              <strong>{currencyTRY.format(tax)}</strong>
+            <TableCell align="right" colSpan={5}>
+              {currencyTRY.format(subTotal)}
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell colSpan={5} align="right">
-              <strong>Genel Toplam (KDV Dahil):</strong>
+            <TableCell align="right" colSpan={5}>
+              Vergi
             </TableCell>
-            <TableCell>
-              <strong>{currencyTRY.format(total)}</strong>
+            <TableCell align="right" colSpan={5}>
+              {currencyTRY.format(tax)}
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell colSpan={7} align="right">
-              <Button variant="contained" color="primary">
-                Ödeme Yap
-              </Button>
+            <TableCell align="right" colSpan={5}>
+              Toplam
+            </TableCell>
+            <TableCell align="right" colSpan={5}>
+              {currencyTRY.format(total)}
             </TableCell>
           </TableRow>
         </TableBody>
@@ -170,5 +153,3 @@ function CartPage() {
     </TableContainer>
   );
 }
-
-export default CartPage;
