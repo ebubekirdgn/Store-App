@@ -21,14 +21,15 @@ import { Link } from "react-router-dom";
 import { currencyTRY } from "../../utils/formats";
 import { useState } from "react";
 import requests from "../../api/apiClient";
-import { useDispatch } from "react-redux";
-import { setCart } from "../../pages/cart/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addItemToCart, setCart } from "../../pages/cart/cartSlice";
 
 export default function ProductCard({ product }) {
   const [isFavorite, setIsFavorite] = useState(false);
-  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const theme = useTheme();
+
+  const {status} = useSelector((state) => state.cart);
 
   const handleFavoriteClick = (e) => {
     e.preventDefault();
@@ -36,14 +37,7 @@ export default function ProductCard({ product }) {
     setIsFavorite(!isFavorite);
   };
 
-   function handleAddItem(productId) {
-    setLoading(true);
-    requests.cart
-      .addItem(productId)
-      .then((cart) => dispatch(setCart(cart)))
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
-  }
+ 
   return (
     <Card
       sx={{
@@ -160,8 +154,12 @@ export default function ProductCard({ product }) {
 
       {/* Sepete ekle butonu */}
       <CardActions sx={{ p: 2 }}>
-        <Button onClick={() => handleAddItem(product.id)} variant="contained" color="primary" fullWidth size="medium" startIcon={<ShoppingCartIcon />}sx={{ py: 1, fontWeight: "bold", "&:hover": { backgroundColor: theme.palette.primary.dark, color: theme.palette.common.white, } }}>
-          {loading ? <CircularProgress size="20px" /> : "Sepete Ekle"}
+        <Button onClick={() => dispatch(addItemToCart( {productId :  product.id }))} variant="contained" color="primary" fullWidth size="medium" startIcon={<ShoppingCartIcon />}sx={{ py: 1, fontWeight: "bold", "&:hover": { backgroundColor: theme.palette.primary.dark, color: theme.palette.common.white, } }}>
+         {status === "pendingAddItem" + product.id ? (
+            <CircularProgress size="20px" />
+          ) : (
+            "Sepete Ekle"
+          )}
         </Button>
       </CardActions>
     </Card>
