@@ -8,28 +8,31 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+
 
 function LoginPage() {
-  const [values, setValues] = useState({
-    username: "",
-    password: "",
+const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm({
+    defaultValues: {
+      username: "",
+      password: "",
+    },
   });
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log(values);
-  }
+  console.log(errors);
 
-  function handleInputChange(e) {
-    const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
+  function handleForm(data) {
+    console.log(data);
   }
 
   return (
     <Container maxWidth="xs">
       <Paper sx={{ padding: 2 }} elevation={3}>
-        <Avatar sx={{ mx: "auto", mb: 2, color: "primary.main" }}>
+        <Avatar sx={{ mx: "auto", mb: 2, color: "secondary.main" }}>
           <LockOutlined />
         </Avatar>
         <Typography
@@ -39,36 +42,52 @@ function LoginPage() {
         >
           Login
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} sx={{ mb: 2 }}>
+        <Box
+          component="form"
+          onSubmit={handleSubmit(handleForm)}
+          noValidate
+          sx={{ mb: 2 }}
+        >
           <TextField
-            value={values.username}
-            // onChange={(e) => setUsername(e.target.value)}
-            onChange={handleInputChange}
-            name="username"
+            {...register("username", {
+              required: "username zorunlu alan",
+              minLength: {
+                value: 3,
+                message: "username min. 3 karakter olmalıdır.",
+              },
+            })}
             label="Enter username"
             size="small"
             fullWidth
-            required
             autoFocus
             sx={{ mb: 2 }}
+            error={!!errors.username}
+            helperText={errors.username?.message}
           />
+
           <TextField
-            value={values.password}
-            onChange={handleInputChange}
-            name="password"
+            {...register("password", {
+              required: "password zorunlu alan",
+              minLength: {
+                value: 6,
+                message: "password min. 6 karakter olmalıdır.",
+              },
+            })}
             type="password"
             label="Enter password"
             size="small"
             fullWidth
-            required
             sx={{ mb: 2 }}
+            error={!!errors.password}
+            helperText={errors.password?.message}
           />
           <Button
             type="submit"
             variant="contained"
             fullWidth
             sx={{ mt: 1 }}
-            color="primary"
+            disabled={!isValid}
+            color="secondary"
           >
             Submit
           </Button>
