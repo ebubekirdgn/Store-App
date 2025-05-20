@@ -20,7 +20,6 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router-dom";
 import { currencyTRY } from "../../utils/formats";
 import { useState } from "react";
-import requests from "../../api/apiClient";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart, setCart } from "../../pages/cart/cartSlice";
 

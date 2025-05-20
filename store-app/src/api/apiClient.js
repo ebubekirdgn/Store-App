@@ -5,7 +5,7 @@ import { router } from "../App";
 axios.defaults.baseURL = "http://localhost:5000/";
 axios.defaults.withCredentials = true;
 
-axios.interceptors.response.use(
+ axios.interceptors.response.use(
   (response) => {
     return response;
   },
@@ -79,10 +79,17 @@ const cart = {
     methods.delete(`carts?productId=${productId}&quantity=${quantity}`),
 };
 
+const account = {
+  login: (formData) => methods.post("users/login", formData),
+  register: (formData) => methods.post("users/register", formData),
+  getUser: () => methods.post("users/getUser"),
+};
+
 const requests = {
   products,
   errors,
   cart,
+  account,
 };
 
 export default requests;
