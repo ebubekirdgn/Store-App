@@ -1,8 +1,22 @@
-import { AppBar, Badge, Box, Button, IconButton, Toolbar } from "@mui/material";
+import {
+  AppBar,
+  Badge,
+  Box,
+  IconButton,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Typography,
+  Avatar,
+  Tooltip,
+  Button,
+} from "@mui/material";
 import StorefrontIcon from "@mui/icons-material/Storefront";
-import { Link, NavLink } from "react-router";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useSelector } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { logout } from "../pages/auth/accountSlice";
 
 const links = [
   { title: "Home", to: "/" },
@@ -15,7 +29,12 @@ const authLinks = [
 ];
 
 export default function Navbar() {
-  const { cart } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  const { cart, user } = useSelector((state) => ({
+    cart: state.cart.cart,
+    user: state.account.user,
+  }));
+
   const itemCount = Array.isArray(cart?.cartItems)
     ? cart.cartItems.reduce(
         (total, item) => total + (item.product?.quantity || 0),
@@ -23,47 +42,121 @@ export default function Navbar() {
       )
     : 0;
 
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleMenuOpen = (event) => setAnchorEl(event.currentTarget);
+  const handleMenuClose = () => setAnchorEl(null);
+  const handleLogout = () => {
+    handleMenuClose();
+    dispatch(logout());
+  };
+
   return (
-    <AppBar position="static" sx={{ backgroundColor: "primary.light" }}>
-      <Toolbar>
-        <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
-          <IconButton color="inherit">
-            <StorefrontIcon />
+    <AppBar
+      position="static"
+      elevation={0}
+      sx={{
+        backgroundColor: "#ffffff",
+        color: "#333",
+        borderBottom: "1px solid #e0e0e0",
+      }}
+    >
+      <Toolbar sx={{ justifyContent: "space-between" }}>
+        {/* Left - Logo & Links */}
+        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+          <IconButton component={NavLink} to="/" color="inherit">
+            <StorefrontIcon fontSize="large" />
           </IconButton>
           {links.map((link) => (
             <Button
               key={link.to}
               component={NavLink}
               to={link.to}
-              color="inherit"
+              sx={{
+                textTransform: "none",
+                fontWeight: 500,
+                fontSize: 16,
+                color: "#555",
+                "&.active": { color: "#1976d2" },
+              }}
             >
               {link.title}
             </Button>
           ))}
         </Box>
 
-        <Box sx={{ display: "flex", alignItems: "center" }}>
+        {/* Right - Cart & Auth */}
+        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
           <IconButton
             color="inherit"
             component={Link}
             to="/cart"
-            size="large"
-            edge="start"
+            sx={{ position: "relative" }}
           >
             <Badge badgeContent={itemCount} color="primary">
-              <ShoppingCartIcon />
+              <ShoppingCartIcon fontSize="medium" />
             </Badge>
           </IconButton>
-          {authLinks.map((link) => (
-            <Button
-              key={link.to}
-              component={NavLink}
-              to={link.to}
-              color="inherit"
-            >
-              {link.title}
-            </Button>
-          ))}
+
+          {user ? (
+            <>
+              <Tooltip title="Hesap ayarları">
+                <IconButton onClick={handleMenuOpen} sx={{ p: 0 }}>
+                  <Avatar sx={{ bgcolor: "#1976d2", width: 36, height: 36 }}>
+                    {user.username?.[0]?.toUpperCase() || "U"}
+                  </Avatar>
+                </IconButton>
+              </Tooltip>
+              <Menu
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleMenuClose}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "right",
+                }}
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                PaperProps={{
+                  elevation: 3,
+                  sx: {
+                    mt: 1,
+                    minWidth: 160,
+                    borderRadius: 2,
+                  },
+                }}
+              >
+                <MenuItem
+                  component={NavLink}
+                  to="/account"
+                  onClick={handleMenuClose}
+                >
+                  Profilim
+                </MenuItem>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+              </Menu>
+            </>
+          ) : (
+            authLinks.map((link) => (
+              <Button
+                key={link.to}
+                component={NavLink}
+                to={link.to}
+                sx={{
+                  textTransform: "none",
+                  fontWeight: 500,
+                  fontSize: 16,
+                  color: "#555",
+                  "&.active": { color: "#1976d2" },
+                }}
+              >
+                {link.title}
+              </Button>
+            ))
+          )}
         </Box>
       </Toolbar>
     </AppBar>

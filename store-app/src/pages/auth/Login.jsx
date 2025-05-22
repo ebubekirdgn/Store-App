@@ -11,9 +11,12 @@ import {
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import requests from "../../api/apiClient";
+import { useDispatch } from "react-redux";
+import { login } from "./accountSlice";
 
 function LoginPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -26,18 +29,18 @@ function LoginPage() {
     },
   });
 
-  function handleForm(data) {
+    function handleForm(data) {
     requests.account
       .login(data)
-      .then((result) => {
-        console.log(result);
-        localStorage.setItem("user", JSON.stringify(result));
+      .then((user) => {
+        console.log(user);
+        localStorage.setItem("user", JSON.stringify(user));
+        dispatch(login(user));
         navigate("/");
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((error) => console.log(error));
   }
+
 
   return (
     <Container maxWidth="xs">
