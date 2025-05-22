@@ -5,6 +5,20 @@ import { router } from "../App";
 axios.defaults.baseURL = "http://localhost:5000/";
 axios.defaults.withCredentials = true;
 
+let store;
+
+export const injectStore = (_store) => {
+  store = _store;
+};
+
+axios.interceptors.request.use((request) => {
+  const token = store.getState().account.user?.token;
+  if (token) {
+    request.headers.Authorization = `Bearer ${token}`;
+  }
+  return request; 
+});
+
  axios.interceptors.response.use(
   (response) => {
     return response;
@@ -82,7 +96,7 @@ const cart = {
 const account = {
   login: (formData) => methods.post("users/login", formData),
   register: (formData) => methods.post("users/register", formData),
-  getUser: () => methods.post("users/getUser"),
+  getUser: () => methods.get("users/getUser"),
 };
 
 const requests = {

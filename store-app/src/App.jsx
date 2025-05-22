@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { setCart } from "./pages/cart/cartSlice";
 import requests from "./api/apiClient";
 import { useEffect } from "react";
+import { login,logout } from "./pages/auth/accountSlice";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,19 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(login(JSON.parse(localStorage.getItem("user"))));
+
+    requests.account
+      .getUser()
+      .then((user) => {
+        setUser(user);
+        localStorage.setItem("user", JSON.stringify(user));
+      })
+      .catch((error) => {
+        console.log(error);
+        dispatch(logout());
+      });
+
     requests.cart
       .get()
       .then((cart) => dispatch(setCart(cart)))
