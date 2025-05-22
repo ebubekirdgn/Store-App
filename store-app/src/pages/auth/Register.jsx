@@ -52,7 +52,7 @@ const formFields = [
 ];
 
 function RegisterPage() {
-   const navigate = useNavigate();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,

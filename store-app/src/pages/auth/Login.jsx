@@ -9,10 +9,13 @@ import {
   Typography,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
-
+import { useNavigate } from "react-router";
+import requests from "../../api/apiClient";
 
 function LoginPage() {
-const {
+  const navigate = useNavigate();
+
+  const {
     register,
     handleSubmit,
     formState: { errors, isValid },
@@ -23,10 +26,17 @@ const {
     },
   });
 
-  console.log(errors);
-
   function handleForm(data) {
-    console.log(data);
+    requests.account
+      .login(data)
+      .then((result) => {
+        console.log(result);
+        localStorage.setItem("user", JSON.stringify(result));
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (

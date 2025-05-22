@@ -12,7 +12,6 @@ const links = [
 const authLinks = [
   { title: "Login", to: "/login" },
   { title: "Register", to: "/register" },
-  { title: "Error", to: "/error" },
 ];
 
 export default function Navbar() {
