@@ -6,7 +6,6 @@ import {
   Menu,
   MenuItem,
   Toolbar,
-  Typography,
   Avatar,
   Tooltip,
   Button,
@@ -15,8 +14,9 @@ import StorefrontIcon from "@mui/icons-material/Storefront";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import React, { useState } from "react";
+import { useState } from "react";
 import { logout } from "../pages/auth/accountSlice";
+import { useNavigate } from "react-router";
 
 const links = [
   { title: "Home", to: "/" },
@@ -47,9 +47,12 @@ export default function Navbar() {
 
   const handleMenuOpen = (event) => setAnchorEl(event.currentTarget);
   const handleMenuClose = () => setAnchorEl(null);
+  const navigate = useNavigate();
+
   const handleLogout = () => {
     handleMenuClose();
     dispatch(logout());
+    navigate("/login");
   };
 
   return (
