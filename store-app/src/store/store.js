@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { cartSlice } from "../pages/cart/cartSlice";
-import { catalogSlice } from "../pages/catalog/catalogSlice";
-import { accountSlice } from "../pages/auth/accountSlice";
+import cartReducer from "./slices/cartSlice";
+import catalogReducer from "./slices/catalogSlice";
+import accountReducer from "./slices/accountSlice";
 
 export const store = configureStore({
   reducer: {
-    cart: cartSlice.reducer,
-    catalog: catalogSlice.reducer,
-    account: accountSlice.reducer,
+    cart: cartReducer,
+    catalog: catalogReducer,
+    account: accountReducer,
   },
 });
 export default store;

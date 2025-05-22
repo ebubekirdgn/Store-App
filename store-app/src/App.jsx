@@ -10,10 +10,10 @@ import ErrorPage from "./pages/errors/Error";
 import ServerErrorPage from "./pages/errors/Server";
 import NotFoundPage from "./pages/errors/NotFound";
 import { useDispatch } from "react-redux";
-import { setCart } from "./pages/cart/cartSlice";
+import { setCart } from "./store/slices/cartSlice";
 import requests from "./api/apiClient";
 import { useEffect } from "react";
-import { login,logout } from "./pages/auth/accountSlice";
+import { login,logout } from "./store/slices/accountSlice";
 
 export const router = createBrowserRouter([
   {

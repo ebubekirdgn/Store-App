@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import requests from "../../api/apiClient";
 import { useDispatch } from "react-redux";
-import { login } from "./accountSlice";
+import { login } from "../../store/slices/accountSlice";
 
 function LoginPage() {
   const navigate = useNavigate();

@@ -29,6 +29,7 @@ const initialState = productsAdapter.getInitialState({
   isLoaded: false,
 });
 
+
 export const catalogSlice = createSlice({
   name: "catalog",
   initialState,
@@ -71,3 +72,28 @@ export const {
   selectAll: selectAllProducts,
   selectTotal: selectTotalProducts,
 } = productsAdapter.getSelectors((state) => state.catalog);
+
+export default catalogSlice.reducer;
+
+
+/**
+ * Redux slice for managing the product catalog state.
+ *
+ * Handles asynchronous actions for fetching all products and fetching a product by ID,
+ * updating the state accordingly for loading, success, and error scenarios.
+ *
+ * State shape managed by this slice includes:
+ * - status: Current status of product fetching operations.
+ * - isLoaded: Boolean indicating if products have been loaded.
+ * - error: Error message if fetching fails.
+ * - Product entities managed by productsAdapter.
+ *
+ * Extra reducers:
+ * - fetchProducts: Handles pending, fulfilled, and rejected states for fetching all products.
+ * - fetchProductById: Handles pending, fulfilled, and rejected states for fetching a single product by ID.
+ *
+ * @see {@link fetchProducts}
+ * @see {@link fetchProductById}
+ * @see {@link productsAdapter}
+ * @see {@link CART_STATUS}
+ */

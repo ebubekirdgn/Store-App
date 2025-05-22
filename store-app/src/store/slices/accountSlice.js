@@ -21,3 +21,4 @@ export const accountSlice = createSlice({
 });
 
 export const { login, logout } = accountSlice.actions;
+export default accountSlice.reducer;

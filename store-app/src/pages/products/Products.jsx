@@ -3,7 +3,7 @@ import ProductList from "../../components/products/ProductList";
 import Loading from "../../components/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { CART_STATUS } from "../../utils/constants";
-import { fetchProducts, selectAllProducts } from "../catalog/catalogSlice";
+import { fetchProducts, selectAllProducts } from "../../store/slices/catalogSlice";
 
 export default function ProductsPage() {
   const dispatch = useDispatch();

@@ -21,7 +21,7 @@ import { Link } from "react-router-dom";
 import { currencyTRY } from "../../utils/formats";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItemToCart, setCart } from "../../pages/cart/cartSlice";
+import { addItemToCart, setCart } from "../../store/slices/cartSlice";
 
 export default function ProductCard({ product }) {
   const [isFavorite, setIsFavorite] = useState(false);

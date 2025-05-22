@@ -3,8 +3,8 @@ import { useParams } from "react-router";
 import ProductItem from "../../components/products/ProductItem";
 import Loading from "../../components/Loading";
 import { useDispatch, useSelector } from "react-redux";
-import { addItemToCart } from "../../pages/cart/cartSlice";
-import { fetchProductById, selectProductById } from "../catalog/catalogSlice";
+import { addItemToCart } from "../../store/slices/cartSlice";
+import { fetchProductById, selectProductById } from "../../store/slices/catalogSlice";
 import { CART_STATUS } from "../../utils/constants";
 
 export default function ProductDetailsPage() {
