@@ -14,6 +14,8 @@ import { getUser } from "./store/slices/accountSlice";
 import { getCart } from "./store/slices/cartSlice";
 import MainLayout from "./layouts/Main";
 import Loading from "./components/Loading";
+import CheckoutPage from "./pages/checkout/Checkout";
+import AuthGuard from "./pages/auth/AuthGuard";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +34,12 @@ export const router = createBrowserRouter([
       { path: "cart", element: <CartPage /> },
       { path: "login", element: <LoginPage /> },
       { path: "register", element: <RegisterPage /> },
+
+      {
+        element: <AuthGuard />,
+        children: [{ path: "checkout", element: <CheckoutPage /> }],
+      },
+
       {
         path: "errors",
         children: [

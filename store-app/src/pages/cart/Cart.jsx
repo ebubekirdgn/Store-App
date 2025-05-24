@@ -2,6 +2,7 @@ import {
   Button,
   CircularProgress,
   Paper,
+  Box,
   Table,
   TableBody,
   TableCell,
@@ -18,6 +19,7 @@ import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart, deleteItemFromCart } from "../../store/slices/cartSlice";
 import { STATUS } from "../../utils/constants";
+import { Link } from "react-router-dom";
 
 export default function CartPage() {
   const { cart, status } = useSelector((state) => state.cart);
@@ -35,6 +37,7 @@ export default function CartPage() {
     return <Typography component="h4">Sepetinizde ürün yok</Typography>;
 
   return (
+    <>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }}>
         <TableHead>
@@ -151,5 +154,24 @@ export default function CartPage() {
         </TableBody>
       </Table>
     </TableContainer>
+     <Box sx={{ display: "flex", justifyContent: "space-between", my: 3 }}>
+        <Button
+          component={Link}
+          to="/products"
+          variant="contained"
+          color="primary"
+        >
+          Continue Shopping
+        </Button>
+        <Button
+          component={Link}
+          to="/checkout"
+          variant="contained"
+          color="secondary"
+        >
+          Checkout
+        </Button>
+      </Box>
+      </>
   );
 }
