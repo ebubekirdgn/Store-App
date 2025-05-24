@@ -46,6 +46,11 @@ export const getUser = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue({ message });
     }
+  },
+  {
+    condition: () => {
+      if (!localStorage.getItem("user")) return false;
+    },
   }
 );
 
