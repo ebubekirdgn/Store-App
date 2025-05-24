@@ -3,56 +3,20 @@ import {
   Avatar,
   Box,
   Button,
+  CircularProgress,
   Container,
   Paper,
   TextField,
   Typography,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
-import requests from "../../api/apiClient";
-import { useNavigate } from "react-router";
-import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUser } from "./../../store/slices/accountSlice";
 
 
-const formFields = [
-  {
-    name: "username",
-    label: "Enter username",
-    validation: {
-      required: "username zorunlu alan",
-      minLength: {
-        value: 3,
-        message: "username min. 3 karakter olmalıdır.",
-      },
-    },
-  },
-  {
-    name: "email",
-    label: "Enter email",
-    validation: {
-      required: "email zorunlu alan",
-      minLength: {
-        value: 3,
-        message: "email min. 3 karakter olmalıdır.",
-      },
-    },
-  },
-  {
-    name: "password",
-    label: "Enter password",
-    type: "password",
-    validation: {
-      required: "password zorunlu alan",
-      minLength: {
-        value: 6,
-        message: "password min. 6 karakter olmalıdır.",
-      },
-    },
-  },
-];
-
-function RegisterPage() {
-  const navigate = useNavigate();
+export default function RegisterPage() {
+  const dispatch = useDispatch();
+  const { status } = useSelector((state) => state.account);
   const {
     register,
     handleSubmit,
@@ -66,19 +30,10 @@ function RegisterPage() {
   });
 
   function handleForm(data) {
-    requests.account
-      .register(data)
-      .then((result) => {
-        toast.success("Kayıt başarılı! Giriş yapabilirsiniz.");
-        navigate("/login");
-      })
-      .catch((error) => {
-        toast.error("Kayıt başarısız! Lütfen tekrar deneyin.");
-        console.log(error);
-      });
+    dispatch(registerUser(data));
   }
 
- return (
+  return (
     <Container maxWidth="xs">
       <Paper sx={{ padding: 2 }} elevation={3}>
         <Avatar sx={{ mx: "auto", mb: 2, color: "secondary.main" }}>
@@ -154,7 +109,7 @@ function RegisterPage() {
             disabled={!isValid}
             color="secondary"
           >
-            Submit
+            {status === "pending" ? <CircularProgress size="25px" /> : "Submit"}
           </Button>
         </Box>
       </Paper>
@@ -162,4 +117,3 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
