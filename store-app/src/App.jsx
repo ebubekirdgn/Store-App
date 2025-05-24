@@ -1,19 +1,19 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import MainLayout from "./layouts/Main";
 import HomePage from "./pages/home/Home";
 import ProductsPage from "./pages/products/Products";
-import ProductDetailsPage from "./pages/products/ProductDetails";
 import CartPage from "./pages/cart/Cart";
 import LoginPage from "./pages/auth/Login";
 import RegisterPage from "./pages/auth/Register";
+import ProductDetailsPage from "./pages/products/ProductDetails";
 import ErrorPage from "./pages/errors/Error";
 import ServerErrorPage from "./pages/errors/Server";
 import NotFoundPage from "./pages/errors/NotFound";
-import { useDispatch } from "react-redux";
-import { setCart } from "./store/slices/cartSlice";
-import requests from "./api/apiClient";
 import { useEffect } from "react";
-import { login,logout } from "./store/slices/accountSlice";
+import requests from "./api/apiClient";
+import { setCart } from "./store/slices/cartSlice";
+import { useDispatch } from "react-redux";
+import { logout, setUser } from "./store/slices/accountSlice";
+import MainLayout from "./layouts/Main";
 
 export const router = createBrowserRouter([
   {
@@ -22,7 +22,6 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "home", element: <HomePage /> },
-
       {
         path: "products",
         children: [
@@ -30,7 +29,6 @@ export const router = createBrowserRouter([
           { path: ":id", element: <ProductDetailsPage /> },
         ],
       },
-
       { path: "cart", element: <CartPage /> },
       { path: "login", element: <LoginPage /> },
       { path: "register", element: <RegisterPage /> },
@@ -51,7 +49,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(login(JSON.parse(localStorage.getItem("user"))));
+    dispatch(setUser(JSON.parse(localStorage.getItem("user"))));
 
     requests.account
       .getUser()
@@ -72,4 +70,5 @@ function App() {
 
   return <RouterProvider router={router} />;
 }
+
 export default App;

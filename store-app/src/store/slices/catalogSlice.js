@@ -4,7 +4,7 @@ import {
   createSlice,
 } from "@reduxjs/toolkit";
 import requests from "../../api/apiClient";
-import { CART_STATUS } from "../../utils/constants";
+import { STATUS } from "../../utils/constants";
 
 export const fetchProducts = createAsyncThunk(
   "catalog/fetchProducts",
@@ -25,7 +25,7 @@ export const fetchProductById = createAsyncThunk(
 const productsAdapter = createEntityAdapter();
 
 const initialState = productsAdapter.getInitialState({
-  status: CART_STATUS.IDLE,
+  status: STATUS.IDLE,
   isLoaded: false,
 });
 
@@ -37,31 +37,31 @@ export const catalogSlice = createSlice({
 
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.pending, (state) => {
-      state.status = CART_STATUS.PENDING_FETCH_PRODUCTS;
+      state.status = STATUS.PENDING_FETCH_PRODUCTS;
     });
 
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
       productsAdapter.setAll(state, action.payload);
       state.isLoaded = true;
-      state.status = CART_STATUS.IDLE;
+      state.status = STATUS.IDLE;
     });
 
-    builder.addCase(fetchProducts.rejected, (state) => {
-      state.status = CART_STATUS.IDLE;
+    builder.addCase(fetchProducts.rejected, (stat,action) => {
+      state.status = STATUS.IDLE;
       state.error = action.error?.message || "Ürünler yüklenemedi";
     });
 
     builder.addCase(fetchProductById.pending, (state) => {
-      state.status = CART_STATUS.PENDING_FETCH_PRODUCTSBYID;
+      state.status = STATUS.PENDING_FETCH_PRODUCTSBYID;
     });
 
     builder.addCase(fetchProductById.fulfilled, (state, action) => {
       productsAdapter.upsertOne(state, action.payload);
-      state.status = CART_STATUS.IDLE;
+      state.status = STATUS.IDLE;
     });
 
     builder.addCase(fetchProductById.rejected, (state) => {
-      state.status = CART_STATUS.IDLE;
+      state.status = STATUS.IDLE;
       state.error = action.error?.message || "Ürün yüklenemedi";
     });
   },
@@ -95,5 +95,5 @@ export default catalogSlice.reducer;
  * @see {@link fetchProducts}
  * @see {@link fetchProductById}
  * @see {@link productsAdapter}
- * @see {@link CART_STATUS}
+ * @see {@link STATUS}
  */

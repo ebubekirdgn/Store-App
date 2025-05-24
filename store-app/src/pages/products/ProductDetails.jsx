@@ -5,7 +5,7 @@ import Loading from "../../components/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart } from "../../store/slices/cartSlice";
 import { fetchProductById, selectProductById } from "../../store/slices/catalogSlice";
-import { CART_STATUS } from "../../utils/constants";
+import { STATUS } from "../../utils/constants";
 
 export default function ProductDetailsPage() {
   const { id } = useParams();
@@ -26,7 +26,7 @@ export default function ProductDetailsPage() {
     if (!product && id) dispatch(fetchProductById(id));
   }, [id]);
 
-  if (loading === CART_STATUS.PENDING_FETCH_PRODUCTSBYID)
+  if (loading === STATUS.PENDING_FETCH_PRODUCTSBYID)
     return <Loading message="Yükleniyor..." />;
 
   if (!product) return <h1>Ürün bulunamadı.</h1>;
@@ -36,7 +36,7 @@ export default function ProductDetailsPage() {
       product={product}
       handleAddItem={handleAddItem}
       cartItem={cartItem}
-      isAdding={status === CART_STATUS.PENDING_ADD_ITEM + product.id}
+      isAdding={status === STATUS.PENDING_ADD_ITEM + product.id}
     />
   );
 }

@@ -17,7 +17,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart, deleteItemFromCart } from "../../store/slices/cartSlice";
-import { CART_STATUS } from "../../utils/constants";
+import { STATUS } from "../../utils/constants";
 
 export default function CartPage() {
   const { cart, status } = useSelector((state) => state.cart);
@@ -67,7 +67,7 @@ export default function CartPage() {
                   }
                 >
                   {status ===
-                  CART_STATUS.PENDING_ADD_ITEM + item.product.productId ? (
+                  STATUS.PENDING_ADD_ITEM + item.product.productId ? (
                     <CircularProgress size="20px" />
                   ) : (
                     <AddCircleOutlineIcon />
@@ -87,7 +87,7 @@ export default function CartPage() {
                   }
                 >
                   {status ===
-                  CART_STATUS.PENDING_DELETE_ITEM +
+                  STATUS.PENDING_DELETE_ITEM +
                     item.product.productId +
                     "single" ? (
                     <CircularProgress size="20px" />
@@ -113,7 +113,7 @@ export default function CartPage() {
                   color="error"
                 >
                   {status ===
-                  CART_STATUS.PENDING_DELETE_ITEM +
+                  STATUS.PENDING_DELETE_ITEM +
                     item.product.productId +
                     "all" ? (
                     <CircularProgress size="20px" />

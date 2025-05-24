@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { CART_STATUS } from "../../utils/constants";
+import {  STATUS } from "../../utils/constants";
 import requests from "../../api/apiClient";
 
 const initialState = {
   cart: null,
-  status: CART_STATUS.IDLE,
+  status: STATUS.IDLE,
 };
 
 export const addItemToCart = createAsyncThunk(
@@ -39,30 +39,30 @@ export const cartSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(addItemToCart.pending, (state, action) => {
-      state.status = CART_STATUS.PENDING_ADD_ITEM + action.meta.arg.productId;
+      state.status = STATUS.PENDING_ADD_ITEM + action.meta.arg.productId;
     });
 
     builder.addCase(addItemToCart.fulfilled, (state, action) => {
       state.cart = action.payload;
-      state.status = CART_STATUS.IDLE;
+      state.status = STATUS.IDLE;
     });
 
     builder.addCase(addItemToCart.rejected, (state) => {
-      state.status = CART_STATUS.IDLE;
+      state.status = STATUS.IDLE;
     });
 
     builder.addCase(deleteItemFromCart.pending, (state, action) => {
       state.status =
-        CART_STATUS.PENDING_DELETE_ITEM + action.meta.arg.productId + action.meta.arg.key;
+        STATUS.PENDING_DELETE_ITEM + action.meta.arg.productId + action.meta.arg.key;
     });
 
     builder.addCase(deleteItemFromCart.fulfilled, (state, action) => {
       state.cart = action.payload;
-      state.status = CART_STATUS.IDLE;
+      state.status = STATUS.IDLE;
     });
 
     builder.addCase(deleteItemFromCart.rejected, (state) => {
-      state.status = CART_STATUS.IDLE;
+      state.status = STATUS.IDLE;
     });
   },
 });

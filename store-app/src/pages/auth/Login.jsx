@@ -3,21 +3,19 @@ import {
   Avatar,
   Box,
   Button,
+  CircularProgress,
   Container,
   Paper,
   TextField,
   Typography,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
-import requests from "../../api/apiClient";
-import { useDispatch } from "react-redux";
-import { login } from "../../store/slices/accountSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../../store/slices/accountSlice";
 
 function LoginPage() {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const { status } = useSelector((state) => state.account);
   const {
     register,
     handleSubmit,
@@ -28,19 +26,9 @@ function LoginPage() {
       password: "",
     },
   });
-
-    function handleForm(data) {
-    requests.account
-      .login(data)
-      .then((user) => {
-        console.log(user);
-        localStorage.setItem("user", JSON.stringify(user));
-        dispatch(login(user));
-        navigate("/");
-      })
-      .catch((error) => console.log(error));
+  function handleForm(data) {
+    dispatch(loginUser(data));
   }
-
 
   return (
     <Container maxWidth="xs">
@@ -102,7 +90,7 @@ function LoginPage() {
             disabled={!isValid}
             color="secondary"
           >
-            Submit
+            {status === "pending" ? <CircularProgress size="25px" /> : "Submit"}
           </Button>
         </Box>
       </Paper>
