@@ -29,19 +29,18 @@ const authLinks = [
 ];
 
 export default function Navbar() {
+
+  const { cart } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.account);
   const dispatch = useDispatch();
-  const { cart, user } = useSelector((state) => ({
-    cart: state.cart.cart,
-    user: state.account.user,
-  }));
 
-  const itemCount = Array.isArray(cart?.cartItems)
-    ? cart.cartItems.reduce(
-        (total, item) => total + (item.product?.quantity || 0),
-        0
-      )
-    : 0;
+  // const itemCount = cart?.cartItems.reduce(
+  //   (total, item) => total + item.product.quantity,
+  //   0
+  // );
 
+  const itemCount = cart?.cartItems.length || 0;
+  
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
