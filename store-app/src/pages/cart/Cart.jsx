@@ -167,9 +167,9 @@ export default function CartPage() {
           component={Link}
           to="/checkout"
           variant="contained"
-          color="secondary"
+          color="success"
         >
-          Checkout
+          Buy
         </Button>
       </Box>
       </>

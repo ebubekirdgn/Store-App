@@ -14,6 +14,7 @@ import PaymentForm from "./PaymentForm";
 import Review from "./Review";
 import { useState } from "react";
 import { ChevronLeftRounded, ChevronRightRounded } from "@mui/icons-material";
+import { FormProvider, useForm } from "react-hook-form";
 
 const steps = ["Teslimat Bilgileri", "Ödeme", "Sipariş Özeti"];
 
@@ -30,71 +31,76 @@ function getStepContent(step) {
 
 export default function CheckoutPage() {
   const [activeStep, setActiveStep] = useState(0);
+  const methods = useForm();
 
   function handlePrevious() {
     setActiveStep(activeStep - 1);
   }
 
   function handleNext() {
-    setActiveStep(activeStep + 1);
+    if (activeStep === 2) {
+      // sipariş kayıt
+    } else {
+      setActiveStep(activeStep + 1);
+    }
   }
   return (
-    <Paper>
-      <Grid container spacing={3}>
-        <Grid
-          size={4}
-          sx={{ p: 3, borderRight: "1px solid", borderColor: "divider" }}
-        >
-          <Info />
-        </Grid>
-        <Grid size={8} sx={{ p: 3 }}>
-          <Stepper activeStep={activeStep} sx={{ height: 40, mb: 4 }}>
-            {steps.map((label) => (
-              <Step key={label} sx={{ color: "primary" }}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-          {activeStep === steps.length ? (
-            <Typography variant="h5">Siparişinizi aldık.</Typography>
-          ) : (
-            <>
-              {getStepContent(activeStep)}
+    <FormProvider {...methods}>
+      <Paper>
+        <Grid container spacing={3}>
+          <Grid
+            size={4}
+            sx={{ p: 3, borderRight: "1px solid", borderColor: "divider" }}
+          >
+            <Info />
+          </Grid>
+          <Grid size={8} sx={{ p: 3 }}>
+            <Stepper activeStep={activeStep} sx={{ height: 40, mb: 4 }}>
+              {steps.map((label) => (
+                <Step key={label} sx={{ color: "secondary" }}>
+                  <StepLabel>{label}</StepLabel>
+                </Step>
+              ))}
+            </Stepper>
+            {activeStep === steps.length ? (
+              <Typography variant="h5">Siparişinizi aldık.</Typography>
+            ) : (
+              <form onSubmit={methods.handleSubmit(handleNext)}>
+                {getStepContent(activeStep)}
 
-              <Box
-                sx={[
-                  { display: "flex" },
-                  activeStep !== 0
-                    ? { justifyContent: "space-between" }
-                    : { justifyContent: "flex-end" },
-                ]}
-              >
-                {activeStep !== 0 && (
+                <Box
+                  sx={[
+                    { display: "flex" },
+                    activeStep !== 0
+                      ? { justifyContent: "space-between" }
+                      : { justifyContent: "flex-end" },
+                  ]}
+                >
+                  {activeStep !== 0 && (
+                    <Button
+                      onClick={handlePrevious}
+                      startIcon={<ChevronLeftRounded />}
+                      variant="contained"
+                      color="success"
+                    >
+                      Geri
+                    </Button>
+                  )}
+
                   <Button
-                    onClick={handlePrevious}
-                    startIcon={<ChevronLeftRounded />}
+                    type="submit"
+                    startIcon={<ChevronRightRounded />}
                     variant="contained"
                     color="success"
                   >
-                    Geri
+                    {activeStep === 2 ? "Siparişi Tamamla" : "İleri"}
                   </Button>
-                )}
-
-                <Button
-                  onClick={handleNext}
-                  startIcon={<ChevronRightRounded />}
-                  variant="contained"
-                  color="success"
-                >
-                  {activeStep === steps.length - 1
-                    ? "Siparişi Tamamla"
-                    : "İleri"}
-                </Button>
-              </Box>
-            </>
-          )}
+                </Box>
+              </form>
+            )}
+          </Grid>
         </Grid>
-      </Grid>
-    </Paper>
+      </Paper>
+    </FormProvider>
   );
 }

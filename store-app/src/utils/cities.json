@@ -1,0 +1,1380 @@
+[
+  {
+    "il": "ADANA",
+    "ilçe": [
+      "ALADAĞ",
+      "CEYHAN",
+      "ÇUKUROVA",
+      "FEKE",
+      "İMAMOĞLU",
+      "KARAİSALI",
+      "KARATAŞ",
+      "KOZAN",
+      "POZANTI",
+      "SAİMBEYLİ",
+      "SARIÇAM",
+      "SEYHAN",
+      "TUFANBEYLİ",
+      "YUMURTALIK",
+      "YÜREĞİR"
+    ]
+  },
+  {
+    "il": "ADIYAMAN",
+    "ilçe": [
+      "BESNİ",
+      "ÇELİKHAN",
+      "GERGER",
+      "GÖLBAŞI",
+      "KAHTA",
+      "MERKEZ",
+      "SAMSAT",
+      "SİNCİK",
+      "TUT"
+    ]
+  },
+  {
+    "il": "AFYONKARAHİSAR",
+    "ilçe": [
+      "BAŞMAKÇI",
+      "BAYAT",
+      "BOLVADİN",
+      "ÇAY",
+      "ÇOBANLAR",
+      "DAZKIRI",
+      "DİNAR",
+      "EMİRDAĞ",
+      "EVCİLER",
+      "HOCALAR",
+      "İHSANİYE",
+      "İSCEHİSAR",
+      "KIZILÖREN",
+      "MERKEZ",
+      "SANDIKLI",
+      "SİNANPAŞA",
+      "SULTANDAĞI",
+      "ŞUHUT"
+    ]
+  },
+  {
+    "il": "AĞRI",
+    "ilçe": [
+      "DİYADİN",
+      "DOĞUBAYAZIT",
+      "ELEŞKİRT",
+      "HAMUR",
+      "MERKEZ",
+      "PATNOS",
+      "TAŞLIÇAY",
+      "TUTAK"
+    ]
+  },
+  {
+    "il": "AMASYA",
+    "ilçe": [
+      "GÖYNÜCEK",
+      "GÜMÜŞHACIKÖY",
+      "HAMAMÖZÜ",
+      "MERKEZ",
+      "MERZİFON",
+      "SULUOVA",
+      "TAŞOVA"
+    ]
+  },
+  {
+    "il": "ANKARA",
+    "ilçe": [
+      "AKYURT",
+      "ALTINDAĞ",
+      "AYAŞ",
+      "BALA",
+      "BEYPAZARI",
+      "ÇAMLIDERE",
+      "ÇANKAYA",
+      "ÇUBUK",
+      "ELMADAĞ",
+      "ETİMESGUT",
+      "EVREN",
+      "GÖLBAŞI",
+      "GÜDÜL",
+      "HAYMANA",
+      "KAHRAMANKAZAN",
+      "KALECİK",
+      "KEÇİÖREN",
+      "KIZILCAHAMAM",
+      "MAMAK",
+      "NALLIHAN",
+      "POLATLI",
+      "PURSAKLAR",
+      "SİNCAN",
+      "ŞEREFLİKOÇHİSAR",
+      "YENİMAHALLE"
+    ]
+  },
+  {
+    "il": "ANTALYA",
+    "ilçe": [
+      "AKSEKİ",
+      "AKSU",
+      "ALANYA",
+      "DEMRE",
+      "DÖŞEMEALTI",
+      "ELMALI",
+      "FİNİKE",
+      "GAZİPAŞA",
+      "GÜNDOĞMUŞ",
+      "İBRADI",
+      "KAŞ",
+      "KEMER",
+      "KEPEZ",
+      "KONYAALTI",
+      "KORKUTELİ",
+      "KUMLUCA",
+      "MANAVGAT",
+      "MURATPAŞA",
+      "SERİK"
+    ]
+  },
+  {
+    "il": "ARTVİN",
+    "ilçe": [
+      "ARDANUÇ",
+      "ARHAVİ",
+      "BORÇKA",
+      "HOPA",
+      "KEMALPAŞA",
+      "MERKEZ",
+      "MURGUL",
+      "ŞAVŞAT",
+      "YUSUFELİ"
+    ]
+  },
+  {
+    "il": "AYDIN",
+    "ilçe": [
+      "BOZDOĞAN",
+      "BUHARKENT",
+      "ÇİNE",
+      "DİDİM",
+      "EFELER",
+      "GERMENCİK",
+      "İNCİRLİOVA",
+      "KARACASU",
+      "KARPUZLU",
+      "KOÇARLI",
+      "KÖŞK",
+      "KUŞADASI",
+      "KUYUCAK",
+      "NAZİLLİ",
+      "SÖKE",
+      "SULTANHİSAR",
+      "YENİPAZAR"
+    ]
+  },
+  {
+    "il": "BALIKESİR",
+    "ilçe": [
+      "ALTIEYLÜL",
+      "AYVALIK",
+      "BALYA",
+      "BANDIRMA",
+      "BİGADİÇ",
+      "BURHANİYE",
+      "DURSUNBEY",
+      "EDREMİT",
+      "ERDEK",
+      "GÖMEÇ",
+      "GÖNEN",
+      "HAVRAN",
+      "İVRİNDİ",
+      "KARESİ",
+      "KEPSUT",
+      "MANYAS",
+      "MARMARA",
+      "SAVAŞTEPE",
+      "SINDIRGI",
+      "SUSURLUK"
+    ]
+  },
+  {
+    "il": "BİLECİK",
+    "ilçe": [
+      "BOZÜYÜK",
+      "GÖLPAZARI",
+      "İNHİSAR",
+      "MERKEZ",
+      "OSMANELİ",
+      "PAZARYERİ",
+      "SÖĞÜT",
+      "YENİPAZAR"
+    ]
+  },
+  {
+    "il": "BİNGÖL",
+    "ilçe": [
+      "ADAKLI",
+      "GENÇ",
+      "KARLIOVA",
+      "KİĞI",
+      "MERKEZ",
+      "SOLHAN",
+      "YAYLADERE",
+      "YEDİSU"
+    ]
+  },
+  {
+    "il": "BİTLİS",
+    "ilçe": [
+      "ADİLCEVAZ",
+      "AHLAT",
+      "GÜROYMAK",
+      "HİZAN",
+      "MERKEZ",
+      "MUTKİ",
+      "TATVAN"
+    ]
+  },
+  {
+    "il": "BOLU",
+    "ilçe": [
+      "DÖRTDİVAN",
+      "GEREDE",
+      "GÖYNÜK",
+      "KIBRISCIK",
+      "MENGEN",
+      "MERKEZ",
+      "MUDURNU",
+      "SEBEN",
+      "YENİÇAĞA"
+    ]
+  },
+  {
+    "il": "BURDUR",
+    "ilçe": [
+      "AĞLASUN",
+      "ALTINYAYLA",
+      "BUCAK",
+      "ÇAVDIR",
+      "ÇELTİKÇİ",
+      "GÖLHİSAR",
+      "KARAMANLI",
+      "KEMER",
+      "MERKEZ",
+      "TEFENNİ",
+      "YEŞİLOVA"
+    ]
+  },
+  {
+    "il": "BURSA",
+    "ilçe": [
+      "BÜYÜKORHAN",
+      "GEMLİK",
+      "GÜRSU",
+      "HARMANCIK",
+      "İNEGÖL",
+      "İZNİK",
+      "KARACABEY",
+      "KELES",
+      "KESTEL",
+      "MUDANYA",
+      "MUSTAFAKEMALPAŞA",
+      "NİLÜFER",
+      "ORHANELİ",
+      "ORHANGAZİ",
+      "OSMANGAZİ",
+      "YENİŞEHİR",
+      "YILDIRIM"
+    ]
+  },
+  {
+    "il": "ÇANAKKALE",
+    "ilçe": [
+      "AYVACIK",
+      "BAYRAMİÇ",
+      "BİGA",
+      "BOZCAADA",
+      "ÇAN",
+      "ECEABAT",
+      "EZİNE",
+      "GELİBOLU",
+      "GÖKÇEADA",
+      "LAPSEKİ",
+      "MERKEZ",
+      "YENİCE"
+    ]
+  },
+  {
+    "il": "ÇANKIRI",
+    "ilçe": [
+      "ATKARACALAR",
+      "BAYRAMÖREN",
+      "ÇERKEŞ",
+      "ELDİVAN",
+      "ILGAZ",
+      "KIZILIRMAK",
+      "KORGUN",
+      "KURŞUNLU",
+      "MERKEZ",
+      "ORTA",
+      "ŞABANÖZÜ",
+      "YAPRAKLI"
+    ]
+  },
+  {
+    "il": "ÇORUM",
+    "ilçe": [
+      "ALACA",
+      "BAYAT",
+      "BOĞAZKALE",
+      "DODURGA",
+      "İSKİLİP",
+      "KARGI",
+      "LAÇİN",
+      "MECİTÖZÜ",
+      "MERKEZ",
+      "OĞUZLAR",
+      "ORTAKÖY",
+      "OSMANCIK",
+      "SUNGURLU",
+      "UĞURLUDAĞ"
+    ]
+  },
+  {
+    "il": "DENİZLİ",
+    "ilçe": [
+      "ACIPAYAM",
+      "BABADAĞ",
+      "BAKLAN",
+      "BEKİLLİ",
+      "BEYAĞAÇ",
+      "BOZKURT",
+      "BULDAN",
+      "ÇAL",
+      "ÇAMELİ",
+      "ÇARDAK",
+      "ÇİVRİL",
+      "GÜNEY",
+      "HONAZ",
+      "KALE",
+      "MERKEZEFENDİ",
+      "PAMUKKALE",
+      "SARAYKÖY",
+      "SERİNHİSAR",
+      "TAVAS"
+    ]
+  },
+  {
+    "il": "DİYARBAKIR",
+    "ilçe": [
+      "BAĞLAR",
+      "BİSMİL",
+      "ÇERMİK",
+      "ÇINAR",
+      "ÇÜNGÜŞ",
+      "DİCLE",
+      "EĞİL",
+      "ERGANİ",
+      "HANİ",
+      "HAZRO",
+      "KAYAPINAR",
+      "KOCAKÖY",
+      "KULP",
+      "LİCE",
+      "SİLVAN",
+      "SUR",
+      "YENİŞEHİR"
+    ]
+  },
+  {
+    "il": "EDİRNE",
+    "ilçe": [
+      "ENEZ",
+      "HAVSA",
+      "İPSALA",
+      "KEŞAN",
+      "LALAPAŞA",
+      "MERİÇ",
+      "MERKEZ",
+      "SÜLOĞLU",
+      "UZUNKÖPRÜ"
+    ]
+  },
+  {
+    "il": "ELAZIĞ",
+    "ilçe": [
+      "AĞIN",
+      "ALACAKAYA",
+      "ARICAK",
+      "BASKİL",
+      "KARAKOÇAN",
+      "KEBAN",
+      "KOVANCILAR",
+      "MADEN",
+      "MERKEZ",
+      "PALU",
+      "SİVRİCE"
+    ]
+  },
+  {
+    "il": "ERZİNCAN",
+    "ilçe": [
+      "ÇAYIRLI",
+      "İLİÇ",
+      "KEMAH",
+      "KEMALİYE",
+      "MERKEZ",
+      "OTLUKBELİ",
+      "REFAHİYE",
+      "TERCAN",
+      "ÜZÜMLÜ"
+    ]
+  },
+  {
+    "il": "ERZURUM",
+    "ilçe": [
+      "AŞKALE",
+      "AZİZİYE",
+      "ÇAT",
+      "HINIS",
+      "HORASAN",
+      "İSPİR",
+      "KARAÇOBAN",
+      "KARAYAZI",
+      "KÖPRÜKÖY",
+      "NARMAN",
+      "OLTU",
+      "OLUR",
+      "PALANDÖKEN",
+      "PASİNLER",
+      "PAZARYOLU",
+      "ŞENKAYA",
+      "TEKMAN",
+      "TORTUM",
+      "UZUNDERE",
+      "YAKUTİYE"
+    ]
+  },
+  {
+    "il": "ESKİŞEHİR",
+    "ilçe": [
+      "ALPU",
+      "BEYLİKOVA",
+      "ÇİFTELER",
+      "GÜNYÜZÜ",
+      "HAN",
+      "İNÖNÜ",
+      "MAHMUDİYE",
+      "MİHALGAZİ",
+      "MİHALIÇÇIK",
+      "ODUNPAZARI",
+      "SARICAKAYA",
+      "SEYİTGAZİ",
+      "SİVRİHİSAR",
+      "TEPEBAŞI"
+    ]
+  },
+  {
+    "il": "GAZİANTEP",
+    "ilçe": [
+      "ARABAN",
+      "İSLAHİYE",
+      "KARKAMIŞ",
+      "NİZİP",
+      "NURDAĞI",
+      "OĞUZELİ",
+      "ŞAHİNBEY",
+      "ŞEHİTKAMİL",
+      "YAVUZELİ"
+    ]
+  },
+  {
+    "il": "GİRESUN",
+    "ilçe": [
+      "ALUCRA",
+      "BULANCAK",
+      "ÇAMOLUK",
+      "ÇANAKÇI",
+      "DERELİ",
+      "DOĞANKENT",
+      "ESPİYE",
+      "EYNESİL",
+      "GÖRELE",
+      "GÜCE",
+      "KEŞAP",
+      "MERKEZ",
+      "PİRAZİZ",
+      "ŞEBİNKARAHİSAR",
+      "TİREBOLU",
+      "YAĞLIDERE"
+    ]
+  },
+  {
+    "il": "GÜMÜŞHANE",
+    "ilçe": [
+      "KELKİT",
+      "KÖSE",
+      "KÜRTÜN",
+      "MERKEZ",
+      "ŞİRAN",
+      "TORUL"
+    ]
+  },
+  {
+    "il": "HAKKARİ",
+    "ilçe": [
+      "ÇUKURCA",
+      "DERECİK",
+      "MERKEZ",
+      "ŞEMDİNLİ",
+      "YÜKSEKOVA"
+    ]
+  },
+  {
+    "il": "HATAY",
+    "ilçe": [
+      "ALTINÖZÜ",
+      "ANTAKYA",
+      "ARSUZ",
+      "BELEN",
+      "DEFNE",
+      "DÖRTYOL",
+      "ERZİN",
+      "HASSA",
+      "İSKENDERUN",
+      "KIRIKHAN",
+      "KUMLU",
+      "PAYAS",
+      "REYHANLI",
+      "SAMANDAĞ",
+      "YAYLADAĞI"
+    ]
+  },
+  {
+    "il": "ISPARTA",
+    "ilçe": [
+      "AKSU",
+      "ATABEY",
+      "EĞİRDİR",
+      "GELENDOST",
+      "GÖNEN",
+      "KEÇİBORLU",
+      "MERKEZ",
+      "SENİRKENT",
+      "SÜTÇÜLER",
+      "ŞARKİKARAAĞAÇ",
+      "ULUBORLU",
+      "YALVAÇ",
+      "YENİŞARBADEMLİ"
+    ]
+  },
+  {
+    "il": "MERSİN",
+    "ilçe": [
+      "AKDENİZ",
+      "ANAMUR",
+      "AYDINCIK",
+      "BOZYAZI",
+      "ÇAMLIYAYLA",
+      "ERDEMLİ",
+      "GÜLNAR",
+      "MEZİTLİ",
+      "MUT",
+      "SİLİFKE",
+      "TARSUS",
+      "TOROSLAR",
+      "YENİŞEHİR"
+    ]
+  },
+  {
+    "il": "İSTANBUL",
+    "ilçe": [
+      "ADALAR",
+      "ARNAVUTKÖY",
+      "ATAŞEHİR",
+      "AVCILAR",
+      "BAĞCILAR",
+      "BAHÇELİEVLER",
+      "BAKIRKÖY",
+      "BAŞAKŞEHİR",
+      "BAYRAMPAŞA",
+      "BEŞİKTAŞ",
+      "BEYKOZ",
+      "BEYLİKDÜZÜ",
+      "BEYOĞLU",
+      "BÜYÜKÇEKMECE",
+      "ÇATALCA",
+      "ÇEKMEKÖY",
+      "ESENLER",
+      "ESENYURT",
+      "EYÜPSULTAN",
+      "FATİH",
+      "GAZİOSMANPAŞA",
+      "GÜNGÖREN",
+      "KADIKÖY",
+      "KAĞITHANE",
+      "KARTAL",
+      "KÜÇÜKÇEKMECE",
+      "MALTEPE",
+      "PENDİK",
+      "SANCAKTEPE",
+      "SARIYER",
+      "SİLİVRİ",
+      "SULTANBEYLİ",
+      "SULTANGAZİ",
+      "ŞİLE",
+      "ŞİŞLİ",
+      "TUZLA",
+      "ÜMRANİYE",
+      "ÜSKÜDAR",
+      "ZEYTİNBURNU"
+    ]
+  },
+  {
+    "il": "İZMİR",
+    "ilçe": [
+      "ALİAĞA",
+      "BALÇOVA",
+      "BAYINDIR",
+      "BAYRAKLI",
+      "BERGAMA",
+      "BEYDAĞ",
+      "BORNOVA",
+      "BUCA",
+      "ÇEŞME",
+      "ÇİĞLİ",
+      "DİKİLİ",
+      "FOÇA",
+      "GAZİEMİR",
+      "GÜZELBAHÇE",
+      "KARABAĞLAR",
+      "KARABURUN",
+      "KARŞIYAKA",
+      "KEMALPAŞA",
+      "KINIK",
+      "KİRAZ",
+      "KONAK",
+      "MENDERES",
+      "MENEMEN",
+      "NARLIDERE",
+      "ÖDEMİŞ",
+      "SEFERİHİSAR",
+      "SELÇUK",
+      "TİRE",
+      "TORBALI",
+      "URLA"
+    ]
+  },
+  {
+    "il": "KARS",
+    "ilçe": [
+      "AKYAKA",
+      "ARPAÇAY",
+      "DİGOR",
+      "KAĞIZMAN",
+      "MERKEZ",
+      "SARIKAMIŞ",
+      "SELİM",
+      "SUSUZ"
+    ]
+  },
+  {
+    "il": "KASTAMONU",
+    "ilçe": [
+      "ABANA",
+      "AĞLI",
+      "ARAÇ",
+      "AZDAVAY",
+      "BOZKURT",
+      "CİDE",
+      "ÇATALZEYTİN",
+      "DADAY",
+      "DEVREKANİ",
+      "DOĞANYURT",
+      "HANÖNÜ",
+      "İHSANGAZİ",
+      "İNEBOLU",
+      "KÜRE",
+      "MERKEZ",
+      "PINARBAŞI",
+      "SEYDİLER",
+      "ŞENPAZAR",
+      "TAŞKÖPRÜ",
+      "TOSYA"
+    ]
+  },
+  {
+    "il": "KAYSERİ",
+    "ilçe": [
+      "AKKIŞLA",
+      "BÜNYAN",
+      "DEVELİ",
+      "FELAHİYE",
+      "HACILAR",
+      "İNCESU",
+      "KOCASİNAN",
+      "MELİKGAZİ",
+      "ÖZVATAN",
+      "PINARBAŞI",
+      "SARIOĞLAN",
+      "SARIZ",
+      "TALAS",
+      "TOMARZA",
+      "YAHYALI",
+      "YEŞİLHİSAR"
+    ]
+  },
+  {
+    "il": "KIRKLARELİ",
+    "ilçe": [
+      "BABAESKİ",
+      "DEMİRKÖY",
+      "KOFÇAZ",
+      "LÜLEBURGAZ",
+      "MERKEZ",
+      "PEHLİVANKÖY",
+      "PINARHİSAR",
+      "VİZE"
+    ]
+  },
+  {
+    "il": "KIRŞEHİR",
+    "ilçe": [
+      "AKÇAKENT",
+      "AKPINAR",
+      "BOZTEPE",
+      "ÇİÇEKDAĞI",
+      "KAMAN",
+      "MERKEZ",
+      "MUCUR"
+    ]
+  },
+  {
+    "il": "KOCAELİ",
+    "ilçe": [
+      "BAŞİSKELE",
+      "ÇAYIROVA",
+      "DARICA",
+      "DERİNCE",
+      "DİLOVASI",
+      "GEBZE",
+      "GÖLCÜK",
+      "İZMİT",
+      "KANDIRA",
+      "KARAMÜRSEL",
+      "KARTEPE",
+      "KÖRFEZ"
+    ]
+  },
+  {
+    "il": "KONYA",
+    "ilçe": [
+      "AHIRLI",
+      "AKÖREN",
+      "AKŞEHİR",
+      "ALTINEKİN",
+      "BEYŞEHİR",
+      "BOZKIR",
+      "CİHANBEYLİ",
+      "ÇELTİK",
+      "ÇUMRA",
+      "DERBENT",
+      "DEREBUCAK",
+      "DOĞANHİSAR",
+      "EMİRGAZİ",
+      "EREĞLİ",
+      "GÜNEYSINIR",
+      "HADİM",
+      "HALKAPINAR",
+      "HÜYÜK",
+      "ILGIN",
+      "KADINHANI",
+      "KARAPINAR",
+      "KARATAY",
+      "KULU",
+      "MERAM",
+      "SARAYÖNÜ",
+      "SELÇUKLU",
+      "SEYDİŞEHİR",
+      "TAŞKENT",
+      "TUZLUKÇU",
+      "YALIHÜYÜK",
+      "YUNAK"
+    ]
+  },
+  {
+    "il": "KÜTAHYA",
+    "ilçe": [
+      "ALTINTAŞ",
+      "ASLANAPA",
+      "ÇAVDARHİSAR",
+      "DOMANİÇ",
+      "DUMLUPINAR",
+      "EMET",
+      "GEDİZ",
+      "HİSARCIK",
+      "MERKEZ",
+      "PAZARLAR",
+      "SİMAV",
+      "ŞAPHANE",
+      "TAVŞANLI"
+    ]
+  },
+  {
+    "il": "MALATYA",
+    "ilçe": [
+      "AKÇADAĞ",
+      "ARAPGİR",
+      "ARGUVAN",
+      "BATTALGAZİ",
+      "DARENDE",
+      "DOĞANŞEHİR",
+      "DOĞANYOL",
+      "HEKİMHAN",
+      "KALE",
+      "KULUNCAK",
+      "PÜTÜRGE",
+      "YAZIHAN",
+      "YEŞİLYURT"
+    ]
+  },
+  {
+    "il": "MANİSA",
+    "ilçe": [
+      "AHMETLİ",
+      "AKHİSAR",
+      "ALAŞEHİR",
+      "DEMİRCİ",
+      "GÖLMARMARA",
+      "GÖRDES",
+      "KIRKAĞAÇ",
+      "KÖPRÜBAŞI",
+      "KULA",
+      "SALİHLİ",
+      "SARIGÖL",
+      "SARUHANLI",
+      "SELENDİ",
+      "SOMA",
+      "ŞEHZADELER",
+      "TURGUTLU",
+      "YUNUSEMRE"
+    ]
+  },
+  {
+    "il": "KAHRAMANMARAŞ",
+    "ilçe": [
+      "AFŞİN",
+      "ANDIRIN",
+      "ÇAĞLAYANCERİT",
+      "DULKADİROĞLU",
+      "EKİNÖZÜ",
+      "ELBİSTAN",
+      "GÖKSUN",
+      "NURHAK",
+      "ONİKİŞUBAT",
+      "PAZARCIK",
+      "TÜRKOĞLU"
+    ]
+  },
+  {
+    "il": "MARDİN",
+    "ilçe": [
+      "ARTUKLU",
+      "DARGEÇİT",
+      "DERİK",
+      "KIZILTEPE",
+      "MAZIDAĞI",
+      "MİDYAT",
+      "NUSAYBİN",
+      "ÖMERLİ",
+      "SAVUR",
+      "YEŞİLLİ"
+    ]
+  },
+  {
+    "il": "MUĞLA",
+    "ilçe": [
+      "BODRUM",
+      "DALAMAN",
+      "DATÇA",
+      "FETHİYE",
+      "KAVAKLIDERE",
+      "KÖYCEĞİZ",
+      "MARMARİS",
+      "MENTEŞE",
+      "MİLAS",
+      "ORTACA",
+      "SEYDİKEMER",
+      "ULA",
+      "YATAĞAN"
+    ]
+  },
+  {
+    "il": "MUŞ",
+    "ilçe": [
+      "BULANIK",
+      "HASKÖY",
+      "KORKUT",
+      "MALAZGİRT",
+      "MERKEZ",
+      "VARTO"
+    ]
+  },
+  {
+    "il": "NEVŞEHİR",
+    "ilçe": [
+      "ACIGÖL",
+      "AVANOS",
+      "DERİNKUYU",
+      "GÜLŞEHİR",
+      "HACIBEKTAŞ",
+      "KOZAKLI",
+      "MERKEZ",
+      "ÜRGÜP"
+    ]
+  },
+  {
+    "il": "NİĞDE",
+    "ilçe": [
+      "ALTUNHİSAR",
+      "BOR",
+      "ÇAMARDI",
+      "ÇİFTLİK",
+      "MERKEZ",
+      "ULUKIŞLA"
+    ]
+  },
+  {
+    "il": "ORDU",
+    "ilçe": [
+      "AKKUŞ",
+      "ALTINORDU",
+      "AYBASTI",
+      "ÇAMAŞ",
+      "ÇATALPINAR",
+      "ÇAYBAŞI",
+      "FATSA",
+      "GÖLKÖY",
+      "GÜLYALI",
+      "GÜRGENTEPE",
+      "İKİZCE",
+      "KABADÜZ",
+      "KABATAŞ",
+      "KORGAN",
+      "KUMRU",
+      "MESUDİYE",
+      "PERŞEMBE",
+      "ULUBEY",
+      "ÜNYE"
+    ]
+  },
+  {
+    "il": "RİZE",
+    "ilçe": [
+      "ARDEŞEN",
+      "ÇAMLIHEMŞİN",
+      "ÇAYELİ",
+      "DEREPAZARI",
+      "FINDIKLI",
+      "GÜNEYSU",
+      "HEMŞİN",
+      "İKİZDERE",
+      "İYİDERE",
+      "KALKANDERE",
+      "MERKEZ",
+      "PAZAR"
+    ]
+  },
+  {
+    "il": "SAKARYA",
+    "ilçe": [
+      "ADAPAZARI",
+      "AKYAZI",
+      "ARİFİYE",
+      "ERENLER",
+      "FERİZLİ",
+      "GEYVE",
+      "HENDEK",
+      "KARAPÜRÇEK",
+      "KARASU",
+      "KAYNARCA",
+      "KOCAALİ",
+      "PAMUKOVA",
+      "SAPANCA",
+      "SERDİVAN",
+      "SÖĞÜTLÜ",
+      "TARAKLI"
+    ]
+  },
+  {
+    "il": "SAMSUN",
+    "ilçe": [
+      "ALAÇAM",
+      "ASARCIK",
+      "ATAKUM",
+      "AYVACIK",
+      "BAFRA",
+      "CANİK",
+      "ÇARŞAMBA",
+      "HAVZA",
+      "İLKADIM",
+      "KAVAK",
+      "LADİK",
+      "SALIPAZARI",
+      "TEKKEKÖY",
+      "TERME",
+      "VEZİRKÖPRÜ",
+      "YAKAKENT",
+      "19 MAYIS"
+    ]
+  },
+  {
+    "il": "SİİRT",
+    "ilçe": [
+      "BAYKAN",
+      "ERUH",
+      "KURTALAN",
+      "MERKEZ",
+      "PERVARİ",
+      "ŞİRVAN",
+      "TİLLO"
+    ]
+  },
+  {
+    "il": "SİNOP",
+    "ilçe": [
+      "AYANCIK",
+      "BOYABAT",
+      "DİKMEN",
+      "DURAĞAN",
+      "ERFELEK",
+      "GERZE",
+      "MERKEZ",
+      "SARAYDÜZÜ",
+      "TÜRKELİ"
+    ]
+  },
+  {
+    "il": "SİVAS",
+    "ilçe": [
+      "AKINCILAR",
+      "ALTINYAYLA",
+      "DİVRİĞİ",
+      "DOĞANŞAR",
+      "GEMEREK",
+      "GÖLOVA",
+      "GÜRÜN",
+      "HAFİK",
+      "İMRANLI",
+      "KANGAL",
+      "KOYULHİSAR",
+      "MERKEZ",
+      "SUŞEHRİ",
+      "ŞARKIŞLA",
+      "ULAŞ",
+      "YILDIZELİ",
+      "ZARA"
+    ]
+  },
+  {
+    "il": "TEKİRDAĞ",
+    "ilçe": [
+      "ÇERKEZKÖY",
+      "ÇORLU",
+      "ERGENE",
+      "HAYRABOLU",
+      "KAPAKLI",
+      "MALKARA",
+      "MARMARAEREĞLİSİ",
+      "MURATLI",
+      "SARAY",
+      "SÜLEYMANPAŞA",
+      "ŞARKÖY"
+    ]
+  },
+  {
+    "il": "TOKAT",
+    "ilçe": [
+      "ALMUS",
+      "ARTOVA",
+      "BAŞÇİFTLİK",
+      "ERBAA",
+      "MERKEZ",
+      "NİKSAR",
+      "PAZAR",
+      "REŞADİYE",
+      "SULUSARAY",
+      "TURHAL",
+      "YEŞİLYURT",
+      "ZİLE"
+    ]
+  },
+  {
+    "il": "TRABZON",
+    "ilçe": [
+      "AKÇAABAT",
+      "ARAKLI",
+      "ARSİN",
+      "BEŞİKDÜZÜ",
+      "ÇARŞIBAŞI",
+      "ÇAYKARA",
+      "DERNEKPAZARI",
+      "DÜZKÖY",
+      "HAYRAT",
+      "KÖPRÜBAŞI",
+      "MAÇKA",
+      "OF",
+      "ORTAHİSAR",
+      "SÜRMENE",
+      "ŞALPAZARI",
+      "TONYA",
+      "VAKFIKEBİR",
+      "YOMRA"
+    ]
+  },
+  {
+    "il": "TUNCELİ",
+    "ilçe": [
+      "ÇEMİŞGEZEK",
+      "HOZAT",
+      "MAZGİRT",
+      "MERKEZ",
+      "NAZIMİYE",
+      "OVACIK",
+      "PERTEK",
+      "PÜLÜMÜR"
+    ]
+  },
+  {
+    "il": "ŞANLIURFA",
+    "ilçe": [
+      "AKÇAKALE",
+      "BİRECİK",
+      "BOZOVA",
+      "CEYLANPINAR",
+      "EYYÜBİYE",
+      "HALFETİ",
+      "HALİLİYE",
+      "HARRAN",
+      "HİLVAN",
+      "KARAKÖPRÜ",
+      "SİVEREK",
+      "SURUÇ",
+      "VİRANŞEHİR"
+    ]
+  },
+  {
+    "il": "UŞAK",
+    "ilçe": [
+      "BANAZ",
+      "EŞME",
+      "KARAHALLI",
+      "MERKEZ",
+      "SİVASLI",
+      "ULUBEY"
+    ]
+  },
+  {
+    "il": "VAN",
+    "ilçe": [
+      "BAHÇESARAY",
+      "BAŞKALE",
+      "ÇALDIRAN",
+      "ÇATAK",
+      "EDREMİT",
+      "ERCİŞ",
+      "GEVAŞ",
+      "GÜRPINAR",
+      "İPEKYOLU",
+      "MURADİYE",
+      "ÖZALP",
+      "SARAY",
+      "TUŞBA"
+    ]
+  },
+  {
+    "il": "YOZGAT",
+    "ilçe": [
+      "AKDAĞMADENİ",
+      "AYDINCIK",
+      "BOĞAZLIYAN",
+      "ÇANDIR",
+      "ÇAYIRALAN",
+      "ÇEKEREK",
+      "KADIŞEHRİ",
+      "MERKEZ",
+      "SARAYKENT",
+      "SARIKAYA",
+      "SORGUN",
+      "ŞEFAATLİ",
+      "YENİFAKILI",
+      "YERKÖY"
+    ]
+  },
+  {
+    "il": "ZONGULDAK",
+    "ilçe": [
+      "ALAPLI",
+      "ÇAYCUMA",
+      "DEVREK",
+      "EREĞLİ",
+      "GÖKÇEBEY",
+      "KİLİMLİ",
+      "KOZLU",
+      "MERKEZ"
+    ]
+  },
+  {
+    "il": "AKSARAY",
+    "ilçe": [
+      "AĞAÇÖREN",
+      "ESKİL",
+      "GÜLAĞAÇ",
+      "GÜZELYURT",
+      "MERKEZ",
+      "ORTAKÖY",
+      "SARIYAHŞİ",
+      "SULTANHANI"
+    ]
+  },
+  {
+    "il": "BAYBURT",
+    "ilçe": [
+      "AYDINTEPE",
+      "DEMİRÖZÜ",
+      "MERKEZ"
+    ]
+  },
+  {
+    "il": "KARAMAN",
+    "ilçe": [
+      "AYRANCI",
+      "BAŞYAYLA",
+      "ERMENEK",
+      "KAZIMKARABEKİR",
+      "MERKEZ",
+      "SARIVELİLER"
+    ]
+  },
+  {
+    "il": "KIRIKKALE",
+    "ilçe": [
+      "BAHŞİLİ",
+      "BALIŞEYH",
+      "ÇELEBİ",
+      "DELİCE",
+      "KARAKEÇİLİ",
+      "KESKİN",
+      "MERKEZ",
+      "SULAKYURT",
+      "YAHŞİHAN"
+    ]
+  },
+  {
+    "il": "BATMAN",
+    "ilçe": [
+      "BEŞİRİ",
+      "GERCÜŞ",
+      "HASANKEYF",
+      "KOZLUK",
+      "MERKEZ",
+      "SASON"
+    ]
+  },
+  {
+    "il": "ŞIRNAK",
+    "ilçe": [
+      "BEYTÜŞŞEBAP",
+      "CİZRE",
+      "GÜÇLÜKONAK",
+      "İDİL",
+      "MERKEZ",
+      "SİLOPİ",
+      "ULUDERE"
+    ]
+  },
+  {
+    "il": "BARTIN",
+    "ilçe": [
+      "AMASRA",
+      "KURUCAŞİLE",
+      "MERKEZ",
+      "ULUS"
+    ]
+  },
+  {
+    "il": "ARDAHAN",
+    "ilçe": [
+      "ÇILDIR",
+      "DAMAL",
+      "GÖLE",
+      "HANAK",
+      "MERKEZ",
+      "POSOF"
+    ]
+  },
+  {
+    "il": "IĞDIR",
+    "ilçe": [
+      "ARALIK",
+      "KARAKOYUNLU",
+      "MERKEZ",
+      "TUZLUCA"
+    ]
+  },
+  {
+    "il": "YALOVA",
+    "ilçe": [
+      "ALTINOVA",
+      "ARMUTLU",
+      "ÇINARCIK",
+      "ÇİFTLİKKÖY",
+      "MERKEZ",
+      "TERMAL"
+    ]
+  },
+  {
+    "il": "KARABÜK",
+    "ilçe": [
+      "EFLANİ",
+      "ESKİPAZAR",
+      "MERKEZ",
+      "OVACIK",
+      "SAFRANBOLU",
+      "YENİCE"
+    ]
+  },
+  {
+    "il": "KİLİS",
+    "ilçe": [
+      "ELBEYLİ",
+      "MERKEZ",
+      "MUSABEYLİ",
+      "POLATELİ"
+    ]
+  },
+  {
+    "il": "OSMANİYE",
+    "ilçe": [
+      "BAHÇE",
+      "DÜZİÇİ",
+      "HASANBEYLİ",
+      "KADİRLİ",
+      "MERKEZ",
+      "SUMBAS",
+      "TOPRAKKALE"
+    ]
+  },
+  {
+    "il": "DÜZCE",
+    "ilçe": [
+      "AKÇAKOCA",
+      "CUMAYERİ",
+      "ÇİLİMLİ",
+      "GÖLYAKA",
+      "GÜMÜŞOVA",
+      "KAYNAŞLI",
+      "MERKEZ",
+      "YIĞILCA"
+    ]
+  }
+]
