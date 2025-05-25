@@ -44,6 +44,9 @@ export const cartSlice = createSlice({
     setCart: (state, action) => {
       state.cart = action.payload;
     },
+    clearCart: (state) => {
+      state.cart = null;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(addItemToCart.pending, (state, action) => {
@@ -78,5 +81,5 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { setCart } = cartSlice.actions;
+export const { setCart,clearCart } = cartSlice.actions;
 export default cartSlice.reducer;

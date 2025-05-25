@@ -1,10 +1,7 @@
 import {
   Grid,
   TextField,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
+ 
 } from "@mui/material";
 import { useFormContext, Controller } from "react-hook-form";
 
@@ -74,54 +71,17 @@ export default function PaymentForm() {
           }}
         />
       </Grid>
-      <Grid item xs={6} md={3}>
-        <Controller
-          name="expirymonth"
-          control={control}
-          rules={{ required: "Ay seçimi zorunlu" }}
-          render={({ field }) => (
-            <FormControl fullWidth size="small" error={!!errors.expirymonth}>
-              <InputLabel>Ay</InputLabel>
-              <Select {...field} label="Ay">
-                {months.map((month) => (
-                  <MenuItem key={month} value={month}>
-                    {month}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          )}
+       <Grid size={{ xs: 12, md: 6 }}>
+        <TextField
+          {...register("expirydate", {
+            required: "expirydate zorunlu alan",
+          })}
+          label="Enter expirydate"
+          size="small"
+          fullWidth
+          sx={{ mb: 2 }}
+          error={!!errors.expirydate}
         />
-        {errors.expirymonth && (
-          <span style={{ color: "red", fontSize: 12 }}>
-            {errors.expirymonth.message}
-          </span>
-        )}
-      </Grid>
-
-      <Grid item xs={6} md={3}>
-        <Controller
-          name="expiryyear"
-          control={control}
-          rules={{ required: "Yıl seçimi zorunlu" }}
-          render={({ field }) => (
-            <FormControl fullWidth size="small" error={!!errors.expiryyear}>
-              <InputLabel>Yıl</InputLabel>
-              <Select {...field} label="Yıl">
-                {years.map((year) => (
-                  <MenuItem key={year} value={year}>
-                    {year}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          )}
-        />
-        {errors.expiryyear && (
-          <span style={{ color: "red", fontSize: 12 }}>
-            {errors.expiryyear.message}
-          </span>
-        )}
       </Grid>
 
       <Grid size={{ xs: 12, md: 6 }}>

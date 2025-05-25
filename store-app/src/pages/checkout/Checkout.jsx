@@ -1,8 +1,10 @@
 import {
   Box,
   Button,
+  CircularProgress,
   Grid,
   Paper,
+  Stack,
   Step,
   StepLabel,
   Stepper,
@@ -12,9 +14,11 @@ import Info from "./Info";
 import AddressForm from "./AddressForm";
 import PaymentForm from "./PaymentForm";
 import Review from "./Review";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { ChevronLeftRounded, ChevronRightRounded } from "@mui/icons-material";
 import { FormProvider, useForm } from "react-hook-form";
+import requests from "../../api/apiClient";
 
 const steps = ["Teslimat Bilgileri", "Ödeme", "Sipariş Özeti"];
 
@@ -31,19 +35,33 @@ function getStepContent(step) {
 
 export default function CheckoutPage() {
   const [activeStep, setActiveStep] = useState(0);
+  const [orderId, setOrderId] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
   const methods = useForm();
 
   function handlePrevious() {
     setActiveStep(activeStep - 1);
   }
 
-  function handleNext() {
+  async function handleNext(data) {
     if (activeStep === 2) {
-      // sipariş kayıt
+      setLoading(true);
+      try {
+        const result = await requests.orders.createOrder(data);
+        setOrderId(result.orderId);
+        setActiveStep(activeStep + 1);
+        dispatch(clearCart());
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
     } else {
       setActiveStep(activeStep + 1);
     }
   }
+
   return (
     <FormProvider {...methods}>
       <Paper>
@@ -63,7 +81,20 @@ export default function CheckoutPage() {
               ))}
             </Stepper>
             {activeStep === steps.length ? (
-              <Typography variant="h5">Siparişinizi aldık.</Typography>
+              <Stack>
+                <Typography variant="h5">Siparişinizi aldık.</Typography>
+                <Typography variant="body1" gutterBottom>
+                  Sipariş numaranız <strong>{orderId}</strong>. Sipariş
+                  onaylandığından size bir eposta göndereceğiz.
+                </Typography>
+                <Button
+                  sx={{ alignSelf: "start" }}
+                  variant="contained"
+                  color="secondary"
+                >
+                  Siparişleri Listele
+                </Button>
+              </Stack>
             ) : (
               <form onSubmit={methods.handleSubmit(handleNext)}>
                 {getStepContent(activeStep)}
@@ -81,7 +112,7 @@ export default function CheckoutPage() {
                       onClick={handlePrevious}
                       startIcon={<ChevronLeftRounded />}
                       variant="contained"
-                      color="success"
+                      color="secondary"
                     >
                       Geri
                     </Button>
@@ -91,9 +122,15 @@ export default function CheckoutPage() {
                     type="submit"
                     startIcon={<ChevronRightRounded />}
                     variant="contained"
-                    color="success"
+                    color="secondary"
                   >
-                    {activeStep === 2 ? "Siparişi Tamamla" : "İleri"}
+                    {loading ? (
+                      <CircularProgress />
+                    ) : activeStep === 2 ? (
+                      "Siparişi Tamamla"
+                    ) : (
+                      "İleri"
+                    )}
                   </Button>
                 </Box>
               </form>
