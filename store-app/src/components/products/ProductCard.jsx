@@ -12,31 +12,35 @@ import {
   Typography,
   useTheme,
   CircularProgress,
- 
 } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { currencyTRY } from "../../utils/formats";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItemToCart, setCart } from "../../store/slices/cartSlice";
+import { addItemToCart } from "../../store/slices/cartSlice";
+import { toggleFavorite } from "../../store/slices/favoritesSlice";
 
 export default function ProductCard({ product }) {
-  const [isFavorite, setIsFavorite] = useState(false);
   const dispatch = useDispatch();
   const theme = useTheme();
-
-  const {status} = useSelector((state) => state.cart);
+  const navigate = useNavigate();
+  const { status } = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.account.user);
+  const favorites = useSelector((state) => state.favorites.favorites);
+  const isFavorite = favorites.includes(product.id);
 
   const handleFavoriteClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsFavorite(!isFavorite);
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+    dispatch(toggleFavorite(product.id));
   };
 
- 
   return (
     <Card
       sx={{
@@ -119,7 +123,7 @@ export default function ProductCard({ product }) {
           </Typography>
 
           <Rating
-            value={product.rating }
+            value={product.rating}
             precision={0.5}
             size="small"
             sx={{ mb: 1 }}
@@ -153,8 +157,23 @@ export default function ProductCard({ product }) {
 
       {/* Sepete ekle butonu */}
       <CardActions sx={{ p: 2 }}>
-        <Button onClick={() => dispatch(addItemToCart( {productId :  product.id }))} variant="contained" color="primary" fullWidth size="medium" startIcon={<ShoppingCartIcon />}sx={{ py: 1, fontWeight: "bold", "&:hover": { backgroundColor: theme.palette.primary.dark, color: theme.palette.common.white, } }}>
-         {status === "pendingAddItem" + product.id ? (
+        <Button
+          onClick={() => dispatch(addItemToCart({ productId: product.id }))}
+          variant="contained"
+          color="primary"
+          fullWidth
+          size="medium"
+          startIcon={<ShoppingCartIcon />}
+          sx={{
+            py: 1,
+            fontWeight: "bold",
+            "&:hover": {
+              backgroundColor: theme.palette.primary.dark,
+              color: theme.palette.common.white,
+            },
+          }}
+        >
+          {status === "pendingAddItem" + product.id ? (
             <CircularProgress size="20px" />
           ) : (
             "Sepete Ekle"

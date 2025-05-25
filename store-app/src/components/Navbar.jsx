@@ -51,7 +51,7 @@ export default function Navbar() {
   const handleLogout = () => {
     handleMenuClose();
     dispatch(logout());
-    navigate("/login");
+    navigate("/");
   };
 
   return (
@@ -136,7 +136,13 @@ export default function Navbar() {
                   to="/account"
                   onClick={handleMenuClose}
                 >
-                  Profilim
+                  My Account
+                </MenuItem>
+                 <MenuItem component={Link} to="/orders">
+                  Orders
+                </MenuItem>
+                 <MenuItem component={Link} to="/favorites">
+                  My Favorites
                 </MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>

@@ -1,13 +1,12 @@
 import {
   Box,
   Button,
-  CircularProgress,
   Grid,
   Paper,
-  Stack,
   Step,
   StepLabel,
   Stepper,
+  CircularProgress ,
   Typography,
 } from "@mui/material";
 import Info from "./Info";
