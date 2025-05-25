@@ -6,15 +6,17 @@ const initialState = {
 
 const favoritesSlice = createSlice({
   name: "favorites",
-  initialState,
+  initialState: {
+    favorites: [],
+  },
   reducers: {
     toggleFavorite: (state, action) => {
-      const productId = action.payload;
-      const index = state.favorites.findIndex((id) => id === productId);
+      const product = action.payload; // Artık ürün objesi bekliyoruz
+      const index = state.favorites.findIndex((item) => item.id === product.id);
       if (index > -1) {
         state.favorites.splice(index, 1); // çıkar
       } else {
-        state.favorites.push(productId); // ekle
+        state.favorites.push(product); // ürün objesini ekle
       }
     },
   },

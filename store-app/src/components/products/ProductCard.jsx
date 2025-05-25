@@ -29,7 +29,7 @@ export default function ProductCard({ product }) {
   const { status } = useSelector((state) => state.cart);
   const user = useSelector((state) => state.account.user);
   const favorites = useSelector((state) => state.favorites.favorites);
-  const isFavorite = favorites.includes(product.id);
+  const isFavorite = favorites.some((item) => item.id === product.id);
 
   const handleFavoriteClick = (e) => {
     e.preventDefault();
@@ -38,7 +38,7 @@ export default function ProductCard({ product }) {
       navigate("/login");
       return;
     }
-    dispatch(toggleFavorite(product.id));
+    dispatch(toggleFavorite(product));
   };
 
   return (
