@@ -18,6 +18,7 @@ import CheckoutPage from "./pages/checkout/Checkout";
 import AuthGuard from "./pages/auth/AuthGuard";
 import OrdersPage from "./pages/orders/Orders";
 import FavoritesPage from "./pages/auth/profile/Favorites";
+import AccountPage from "./pages/auth/profile/Account";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,7 @@ export const router = createBrowserRouter([
           { path: "checkout", element: <CheckoutPage /> },
           { path: "orders", element: <OrdersPage /> },
           { path: "favorites", element: <FavoritesPage /> },
+          { path: "account", element: <AccountPage /> },
         ],
       },
 

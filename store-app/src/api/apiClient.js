@@ -16,10 +16,10 @@ axios.interceptors.request.use((request) => {
   if (token) {
     request.headers.Authorization = `Bearer ${token}`;
   }
-  return request; 
+  return request;
 });
 
- axios.interceptors.response.use(
+axios.interceptors.response.use(
   (response) => {
     return response;
   },
@@ -97,6 +97,7 @@ const account = {
   login: (formData) => methods.post("users/login", formData),
   register: (formData) => methods.post("users/register", formData),
   getUser: () => methods.get("users/getUser"),
+  update: (formData) => methods.put("users/update", formData), // EKLENDİ
 };
 
 const orders = {

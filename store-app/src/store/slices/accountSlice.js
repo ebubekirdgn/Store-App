@@ -41,6 +41,8 @@ export const getUser = createAsyncThunk(
     thunkAPI.dispatch(setUser(JSON.parse(localStorage.getItem("user"))));
     try {
       const user = await requests.account.getUser();
+      console.log("User data:", user);
+
       localStorage.setItem("user", JSON.stringify(user));
       return user;
     } catch (error) {
@@ -51,6 +53,20 @@ export const getUser = createAsyncThunk(
     condition: () => {
       if (!localStorage.getItem("user")) return false;
     },
+  }
+);
+
+export const update = createAsyncThunk(
+  "account/update",
+  async (data, thunkAPI) => {
+    try {
+      const update = await requests.account.update(data);
+      localStorage.setItem("user", JSON.stringify(update));
+      return update;
+    } catch (error) {
+      console.error("Update error:", error); // Hata detayını gör
+      return thunkAPI.rejectWithValue({ message: error });
+    }
   }
 );
 
@@ -91,6 +107,8 @@ export const accountSlice = createSlice({
       state.status = STATUS.IDLE;
     });
 
+    //FOR GET USER
+
     builder.addCase(getUser.fulfilled, (state, action) => {
       state.user = action.payload;
     });
@@ -99,8 +117,15 @@ export const accountSlice = createSlice({
       localStorage.removeItem("user");
       router.navigate("/login");
     });
+
+    // FOR UPDATE USER
+    builder.addCase(update.fulfilled, (state, action) => {
+    state.user = action.payload;
+  });
   },
 });
+
+
 
 export const { setUser, logout } = accountSlice.actions;
 export default accountSlice.reducer;
