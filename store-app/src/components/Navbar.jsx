@@ -29,7 +29,6 @@ const authLinks = [
 ];
 
 export default function Navbar() {
-
   const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.account);
   const dispatch = useDispatch();
@@ -40,7 +39,7 @@ export default function Navbar() {
   // );
 
   const itemCount = cart?.cartItems.length || 0;
-  
+
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -138,10 +137,10 @@ export default function Navbar() {
                 >
                   My Account
                 </MenuItem>
-                 <MenuItem component={Link} to="/orders">
+                <MenuItem component={Link} to="/orders">
                   Orders
                 </MenuItem>
-                 <MenuItem component={Link} to="/favorites">
+                <MenuItem component={Link} to="/favorites">
                   My Favorites
                 </MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>

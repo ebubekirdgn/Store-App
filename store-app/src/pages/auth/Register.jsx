@@ -13,7 +13,6 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "./../../store/slices/accountSlice";
 
-
 export default function RegisterPage() {
   const dispatch = useDispatch();
   const { status } = useSelector((state) => state.account);
@@ -116,4 +115,3 @@ export default function RegisterPage() {
     </Container>
   );
 }
-
