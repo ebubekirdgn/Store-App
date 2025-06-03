@@ -3,7 +3,7 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const { get, add } = require("../data/users");
+const { get, add,update } = require("../data/users");
 
 const router = express.Router();
 
@@ -86,6 +86,17 @@ router.get("/getUser", verifyToken, async (req, res, next) => {
     res
       .status(200)
       .json({ username: req.user.username, token: req.user.token });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.put("/update", verifyToken, async (req, res, next) => {
+  try {
+    const updates = { username: req.body.username }; // Sadece username güncellensin
+    const updatedUser = await update(req.user.username, updates);
+    const { password, ...userWithoutPassword } = updatedUser;
+    res.status(200).json({ message: "User updated", user: userWithoutPassword });
   } catch (error) {
     next(error);
   }

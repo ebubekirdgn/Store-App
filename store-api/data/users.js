@@ -30,5 +30,23 @@ async function add(user) {
   await writeData(data);
 }
 
+async function update(username, updates) {
+  const data = await readData();
+  const userIndex = data.users.findIndex((p) => p.username === username);
+
+  if (userIndex === -1) {
+    throw new NotFoundError("User not found");
+  }
+
+  // Sadece username güncellensin
+  if (updates.username) {
+    data.users[userIndex].username = updates.username;
+  }
+
+  await writeData(data);
+  return data.users[userIndex];
+}
+
 exports.get = get;
 exports.add = add;
+exports.update = update;
