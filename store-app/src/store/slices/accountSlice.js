@@ -120,12 +120,10 @@ export const accountSlice = createSlice({
 
     // FOR UPDATE USER
     builder.addCase(update.fulfilled, (state, action) => {
-    state.user = action.payload;
-  });
+      state.user = action.payload;
+    });
   },
 });
-
-
 
 export const { setUser, logout } = accountSlice.actions;
 export default accountSlice.reducer;
