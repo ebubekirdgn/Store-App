@@ -24,6 +24,11 @@ axios.interceptors.response.use(
     return response;
   },
   (error) => {
+    // Hata kontrolü eklendi
+    if (!error.response) {
+      toast.error("Sunucuya ulaşılamıyor.");
+      return Promise.reject(error);
+    }
     const { data, status } = error.response;
 
     switch (status) {
@@ -36,11 +41,9 @@ axios.interceptors.response.use(
       case 403:
         if (data.errors) {
           const errors = [];
-
           for (const key in data.errors) {
             errors.push(data.errors[key]);
           }
-
           let result = { errors: errors, message: data.message };
           throw result;
         }
@@ -69,7 +72,8 @@ const methods = {
 };
 
 const products = {
-  list: () => methods.get("products"),
+  list: (page = 1, pageSize = 20) =>
+    methods.get(`products?page=${page}&pageSize=${pageSize}`),
   details: (id) => methods.get(`products/${id}`),
 };
 

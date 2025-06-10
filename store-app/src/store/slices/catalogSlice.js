@@ -29,7 +29,6 @@ const initialState = productsAdapter.getInitialState({
   isLoaded: false,
 });
 
-
 export const catalogSlice = createSlice({
   name: "catalog",
   initialState,
@@ -41,12 +40,13 @@ export const catalogSlice = createSlice({
     });
 
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      productsAdapter.setAll(state, action.payload);
+      productsAdapter.setAll(state, action.payload.products); // SADECE ürün dizisi!
       state.isLoaded = true;
       state.status = STATUS.IDLE;
+      // Diğer meta bilgileri de state'e eklemek istersen ayrıca ekle
     });
 
-    builder.addCase(fetchProducts.rejected, (stat,action) => {
+    builder.addCase(fetchProducts.rejected, (state, action) => {
       state.status = STATUS.IDLE;
       state.error = action.error?.message || "Ürünler yüklenemedi";
     });
@@ -74,7 +74,6 @@ export const {
 } = productsAdapter.getSelectors((state) => state.catalog);
 
 export default catalogSlice.reducer;
-
 
 /**
  * Redux slice for managing the product catalog state.
