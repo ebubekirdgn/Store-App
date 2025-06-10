@@ -7,9 +7,10 @@ const router = express.Router();
 
 router.get("/", async (req, res, next) => {
   try {
-    const products = await getAll();
-    res.json(products);
-    // throw new ServerError("Server hatası oluştu", "Api Hatası");
+    const page = parseInt(req.query.page) || 1;
+    const pageSize = parseInt(req.query.pageSize) || 20;
+    const result = await getAll(page, pageSize);
+    res.json(result);
   } catch (error) {
     next(error);
   }

@@ -13,12 +13,21 @@ async function writeData(data) {
   await fs.writeFile("db.json", JSON.stringify(data));
 }
 
-async function getAll() {
+async function getAll(page, pageSize) {
   const data = await readData();
   if (!data.products) {
     throw new NotFoundError("Could not find any products.");
   }
-  return data.products;
+  const start = (page - 1) * pageSize;
+  const end = start + pageSize;
+  const paginated = data.products.slice(start, end);
+  return {
+    products: paginated,
+    total: data.products.length,
+    page,
+    pageSize,
+    totalPages: Math.ceil(data.products.length / pageSize),
+  };
 }
 
 async function get(id) {
