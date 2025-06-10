@@ -8,6 +8,7 @@ import {
   Stepper,
   CircularProgress ,
   Typography,
+  Stack,
 } from "@mui/material";
 import Info from "./Info";
 import AddressForm from "./AddressForm";
@@ -18,6 +19,7 @@ import { useState } from "react";
 import { ChevronLeftRounded, ChevronRightRounded } from "@mui/icons-material";
 import { FormProvider, useForm } from "react-hook-form";
 import requests from "../../api/apiClient";
+import { clearCart } from "../../store/slices/cartSlice";
 
 const steps = ["Teslimat Bilgileri", "Ödeme", "Sipariş Özeti"];
 

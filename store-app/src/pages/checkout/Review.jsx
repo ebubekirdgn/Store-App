@@ -6,6 +6,7 @@ export default function Review() {
   return (
     <Stack spacing={2} sx={{ mb: 3 }} divider={<Divider />}>
       <Box>
+        <Box>
         <Typography variant="subtitle2" gutterBottom>
           Teslimat Bilgileri
         </Typography>
@@ -14,8 +15,12 @@ export default function Review() {
         </Typography>
         <Typography gutterBottom>{getValues("phone")}</Typography>
         <Typography gutterBottom>
-          {getValues("address")} / {getValues("city")}
+          {getValues("address")}
         </Typography>
+        <Typography gutterBottom>
+          {getValues("il")} / {getValues("ilce")}
+        </Typography>
+      </Box>
       </Box>
 
       <Box>

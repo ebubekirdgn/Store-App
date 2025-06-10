@@ -6,9 +6,10 @@ import {
   Select,
   MenuItem,
   Typography,
+  TextField,
 } from "@mui/material";
 
-import { Grid } from "@mui/material"
+import { Grid } from "@mui/material";
 
 export default function AddressForm() {
   const {
@@ -26,9 +27,9 @@ export default function AddressForm() {
       : [];
 
   return (
-    <Grid container columns={12} columnSpacing={3} rowSpacing={3}>
-      {/* Şehir (il) Seçimi */}
-      <Grid columnspan={{ xs: 12, md: 6 }}>
+    <Grid container spacing={3}>
+      {/* İlk satır: İl ve İlçe dropdownları */}
+      <Grid size={{ xs: 12, md: 6 }}>
         <Controller
           name="il"
           control={control}
@@ -58,9 +59,7 @@ export default function AddressForm() {
           )}
         />
       </Grid>
-
-      {/* İlçe Seçimi */}
-      <Grid columnspan={{ xs: 12, md: 6 }}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <Controller
           name="ilce"
           control={control}
@@ -84,6 +83,37 @@ export default function AddressForm() {
                 {errors.ilce?.message}
               </Typography>
             </FormControl>
+          )}
+        />
+      </Grid>
+
+      {/* İkinci satır: Tam adres */}
+      <Grid size={{ xs: 12, md: 12 }}>
+        <Controller
+          name="address"
+          control={control}
+          rules={{
+            required: "Adres zorunlu",
+            maxLength: {
+              value: 250,
+              message: "Adres en fazla 250 karakter olmalı",
+            },
+          }}
+          render={({ field }) => (
+            <TextField
+              {...field}
+              label="Adres"
+              multiline
+              minRows={2}
+              maxRows={4}
+              fullWidth
+              inputProps={{ maxLength: 250 }}
+              error={!!errors.address}
+              helperText={
+                errors.address?.message || `${field.value?.length || 0}/250`
+              }
+              sx={{ mt: 2 }}
+            />
           )}
         />
       </Grid>
