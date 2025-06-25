@@ -5,7 +5,7 @@ import {
   Pagination,
   CircularProgress,
 } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import ProductCard from "./ProductCard";
 import requests from "../../api/apiClient";
 import { useSearchParams } from "react-router-dom"; // EKLENDİ
@@ -29,10 +29,12 @@ function ProductList() {
     });
   }, [pageParam]);
 
-  const handleChange = (event, value) => {
+  const memoizedProducts = useMemo(() => products, [products]);
+
+  const handleChange = useCallback((event, value) => {
     setSearchParams({ page: value }); // URL'yi günceller
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  }, [setSearchParams]);
 
   if (loading) {
     return (
@@ -59,7 +61,7 @@ function ProductList() {
           gap: "20px",
         }}
       >
-        {products.map((product) => (
+        {memoizedProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </Box>

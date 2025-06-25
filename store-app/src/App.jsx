@@ -1,24 +1,26 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import HomePage from "./pages/home/Home";
-import ProductsPage from "./pages/products/Products";
-import CartPage from "./pages/cart/Cart";
-import LoginPage from "./pages/auth/Login";
-import RegisterPage from "./pages/auth/Register";
-import ProductDetailsPage from "./pages/products/ProductDetails";
-import ErrorPage from "./pages/errors/Error";
-import ServerErrorPage from "./pages/errors/Server";
-import NotFoundPage from "./pages/errors/NotFound";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense, lazy } from "react";
 import { useDispatch } from "react-redux";
 import { getUser } from "./store/slices/accountSlice";
 import { getCart } from "./store/slices/cartSlice";
 import MainLayout from "./layouts/Main";
 import Loading from "./components/Loading";
-import CheckoutPage from "./pages/checkout/Checkout";
-import AuthGuard from "./pages/auth/AuthGuard";
-import OrdersPage from "./pages/orders/Orders";
-import FavoritesPage from "./pages/auth/profile/Favorites";
-import AccountPage from "./pages/auth/profile/Account";
+
+// Lazy load page components
+const HomePage = lazy(() => import("./pages/home/Home"));
+const ProductsPage = lazy(() => import("./pages/products/Products"));
+const CartPage = lazy(() => import("./pages/cart/Cart"));
+const LoginPage = lazy(() => import("./pages/auth/Login"));
+const RegisterPage = lazy(() => import("./pages/auth/Register"));
+const ProductDetailsPage = lazy(() => import("./pages/products/ProductDetails"));
+const ErrorPage = lazy(() => import("./pages/errors/Error"));
+const ServerErrorPage = lazy(() => import("./pages/errors/Server"));
+const NotFoundPage = lazy(() => import("./pages/errors/NotFound"));
+const CheckoutPage = lazy(() => import("./pages/checkout/Checkout"));
+const AuthGuard = lazy(() => import("./pages/auth/AuthGuard"));
+const OrdersPage = lazy(() => import("./pages/orders/Orders"));
+const FavoritesPage = lazy(() => import("./pages/auth/profile/Favorites"));
+const AccountPage = lazy(() => import("./pages/auth/profile/Account"));
 
 export const router = createBrowserRouter([
   {
@@ -37,7 +39,6 @@ export const router = createBrowserRouter([
       { path: "cart", element: <CartPage /> },
       { path: "login", element: <LoginPage /> },
       { path: "register", element: <RegisterPage /> },
-
       {
         element: <AuthGuard />,
         children: [
@@ -47,7 +48,6 @@ export const router = createBrowserRouter([
           { path: "account", element: <AccountPage /> },
         ],
       },
-
       {
         path: "errors",
         children: [
@@ -76,7 +76,11 @@ function App() {
 
   if (loading) return <Loading message="Uygulama Başlatılıyor" />;
 
-  return <RouterProvider router={router} />;
+  return (
+    <Suspense fallback={<Loading message="Sayfa yükleniyor..." />}>
+      <RouterProvider router={router} />
+    </Suspense>
+  );
 }
 
 export default App;

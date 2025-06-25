@@ -1,3 +1,4 @@
+import React, { memo } from "react";
 import { Backdrop, Box, CircularProgress, Typography, useTheme } from "@mui/material";
 import { keyframes } from "@emotion/react";
 
@@ -13,7 +14,7 @@ const bounce = keyframes`
   50% { transform: translateY(-10px); }
 `;
 
-export default function Loading({ message = "Loading..." }) {
+const Loading = function Loading({ message = "Loading..." }) {
   const theme = useTheme();
 
   return (
@@ -85,3 +86,5 @@ export default function Loading({ message = "Loading..." }) {
     </Backdrop>
   );
 }
+
+export default memo(Loading);
