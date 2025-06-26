@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import { useEffect, useState, Suspense, lazy } from "react";
+import { useEffect, Suspense, lazy } from "react";
 import { useDispatch } from "react-redux";
 import { getUser } from "./store/slices/accountSlice";
 import { getCart } from "./store/slices/cartSlice";
@@ -63,18 +63,19 @@ export const router = createBrowserRouter([
 
 function App() {
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(true);
 
   const initApp = async () => {
-    await dispatch(getUser());
-    await dispatch(getCart());
+    // API çağrılarını birbirini beklemeden, paralel olarak çalıştır
+    await Promise.all([dispatch(getUser()), dispatch(getCart())]);
   };
 
   useEffect(() => {
-    initApp().then(() => setLoading(false));
-  }, []);
+    initApp();
+  }, [dispatch]);
 
-  if (loading) return <Loading message="Uygulama Başlatılıyor" />;
+  // Uygulama genelindeki loading state'i kaldırıldı.
+  // Artık uygulama anında render edilecek, veriler geldikçe bileşenler güncellenecek.
+  // Bu, FCP ve LCP metriklerini dramatik olarak iyileştirecektir.
 
   return (
     <Suspense fallback={<Loading message="Sayfa yükleniyor..." />}>
