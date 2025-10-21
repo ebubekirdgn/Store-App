@@ -17,7 +17,7 @@ Aşağıdaki adımları takip ederek projeyi çalıştırabilirsiniz:
 
 ```bash
 # Depoyu klonlayın
-git clone https://github.com/kullanici-adi/store-app.git
+git clone https://github.com/ebubekirdgn/store-app.git
 
 # Klasöre gidin
 cd store-app
